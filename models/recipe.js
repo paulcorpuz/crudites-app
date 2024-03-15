@@ -5,26 +5,30 @@ const Schema = mongoose.Schema;
 
 
 const recipeSchema = new Schema({
-    Cuisine: {
-        type: String,  //TODO: because there is a ton of cuisine, think of the performers from Mongoose movies
-    },
-    Meal: {
-        type: String,
-        enum: ['Breakfast/Brunch', 'Lunch', 'Appetizer/Snack', 'Dinner', 'Dessert', 'Drink',],
-    },
-    Ingredients: {
+    name: {
         type: String,
         // default: 'DEN'
     },
-    Allergens: {
+    cuisine: {
+        type: String,  //TODO: because there is a ton of cuisine, think of the performers from Mongoose movies
+    },
+    meal: {
+        type: String,
+        enum: ['Breakfast/Brunch', 'Lunch', 'Appetizer/Snack', 'Dinner', 'Dessert', 'Drink',],
+    },
+    ingredients: {
+        type: String,
+        // default: 'DEN'
+    },
+    allergens: {
         type: String,
         enum: ['Milk', 'Eggs', 'Fish', 'Crustacean Shellfish', 'Tree Nuts', 'Peanuts', 'Wheat', 'Soya',],
     },
-    Recipe: {
+    directions: {
         type: [String],
         required: true,
     },
-    Reviews: {
+    reviews: {
         type: Number,
         required: true,
     },
