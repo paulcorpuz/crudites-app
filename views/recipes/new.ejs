@@ -4,45 +4,41 @@
 
     <h2>Add new Recipe</h2>
     <form action="/recipes" method="POST">
+
         <label>Name:
-            <input type="text" name="name">
+            <input type="text" name="name" required>
         </label><br>
 
-        <label>Cuisine:
-            <input type="text" name="cuisine">
+        <label>Ingredients(separate with comma):
+            <input type="text" name="ingredients" required>
         </label><br>
 
-        <label>Meal
+        <label>Instructions:
+            <input type="text" name="instructions" required>
+        </label><br>
+
+        <label>Cooking Time (In minutes):
+            <input type="number" name="cookingTime" required>
+        </label><br>
+
+        <label>Meal:
             <select name="meal">
+                <option value="Appetizer/Snack">Appetizer/Snack</option>
                 <option value="Breakfast/Brunch">Breakfast/Brunch</option>
                 <option value="Lunch">Lunch</option>
-                <option value="Appetizer/Snack">Appetizer/Snack</option>
                 <option value="Dinner">Dinner</option>
                 <option value="Dessert">Dessert</option>
                 <option value="Drink">Drink</option>
             </select>
         </label><br>
 
-        <label>Ingredients (separate actors with commas):
-            <input type="text" name="ingredients">
+        <label>Image URL:
+            <input type="string" name="imageUrl">
         </label><br>
 
-        <label>Allergens:
-            <select name="meal">
-                <option value="Milk">Milk</option>
-                <option value="Eggs">Eggs</option>
-                <option value="Fish">Fish</option>
-                <option value="Crustacean Shellfish">Crustacean Shellfish</option>
-                <option value="Tree Nuts">Tree Nuts</option>
-                <option value="Peanuts">Peanuts</option>
-                <option value="Wheat">Wheat</option>
-                <option value="Soya">Soya</option>
-            </select>
-        </label><br>
-
-        <button type="submit">Add Recipe</button>
+        <button type="submit">Add Recipe!!</button>
+    
     </form>
-
     <p>
         <%= errorMsg %>
     </p>

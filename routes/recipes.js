@@ -7,6 +7,14 @@ const recipesCtrl = require('../controllers/recipes');
 //these are combined with server
 
 
+/* -- CREATE -- */
+// GET /recipes/new -- Add new recipe
+router.get('/new', recipesCtrl.new);
+// POST /flights
+router.post('/', recipesCtrl.create)
+
+
+/* -- READ -- */
 // GET /recipes index
 router.get('/', recipesCtrl.index)
 
@@ -15,11 +23,8 @@ router.get('/:id', recipesCtrl.show)
 
 
 
-// adding in a new recipe
-// GET /recipes/new
-router.get('/new', recipesCtrl.new);
-
-
+/* -- UPDATE -- */
+/* -- DELETE -- */
 
 
 
