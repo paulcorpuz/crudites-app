@@ -27,10 +27,13 @@ const recipeSchema = new Schema({
         cookingTime:{
             type: Number,
             required: true,
+            min: 0,
+            max: 9999,
         },
-        meal: {
+        category: {
             type: String,
-            enum: ['Appetizer/Snack','Breakfast/Brunch','Lunch','Dinner','Dessert','Drink',],
+            enum: ['Appetizer', 'Dessert', 'Drinks', 'Entree','Other','Side Dish'],
+            default: 'Entree',
         },
         imageUrl:{
             type: String,

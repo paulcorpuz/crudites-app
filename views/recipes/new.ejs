@@ -13,22 +13,22 @@
             <input type="text" name="ingredients" required>
         </label><br>
 
-        <label>Instructions:
+        <label>Cooking Instructions:
             <input type="text" name="instructions" required>
         </label><br>
 
-        <label>Cooking Time (In minutes):
-            <input type="number" name="cookingTime" required>
+        <label>Cooking Time (Minutes):
+            <input type="number" name="cookingTime" required min="0" max="9999">
         </label><br>
 
-        <label>Meal:
-            <select name="meal">
-                <option value="Appetizer/Snack">Appetizer/Snack</option>
-                <option value="Breakfast/Brunch">Breakfast/Brunch</option>
-                <option value="Lunch">Lunch</option>
-                <option value="Dinner">Dinner</option>
+        <label>Category:
+            <select name="category">
+                <option value="Appetizer">Appetizer</option>
                 <option value="Dessert">Dessert</option>
-                <option value="Drink">Drink</option>
+                <option value="Drinks">Drinks</option>
+                <option value="Entree">Entrée</option>
+                <option value="Other">Other</option>
+                <option value="Side Dish">Side Dish</option>
             </select>
         </label><br>
 

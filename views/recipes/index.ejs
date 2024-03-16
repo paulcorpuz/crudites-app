@@ -1,7 +1,33 @@
 <%- include('../partials/header') %>
 
-<h2>Recipe Index All Recipes</h2>
+    <h2>All Recipes</h2>
+    
+    <br><br>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Cooking Time (Minutes)</th>
+                <th>Recipe Detail</th>
+            </tr>
+        </thead>
 
+        <tbody>
+            <% recipes.forEach(function(r) { %>
+                <tr>
+                    <td>
+                        <img src="<%= r.imageUrl %>" alt="Recipe Image" style="width: 100px; height: 100px;">
+                    </td>
+                    <td><%= r.name %></td>
+                    <td><%= r.category %></td>
+                    <td><%= r.cookingTime %></td>
+                    <td><a href="/recipes/<%= r._id %>">Recipe Detail</a></td>
+                </tr>
+                <% }); %>
+        </tbody>
+    </table>
 
-
-<%- include('../partials/footer') %>
+    <%- include('../partials/footer') %>
