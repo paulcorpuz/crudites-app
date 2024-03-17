@@ -39,7 +39,6 @@ async function index(req, res) {
 }
 async function show(req, res) {
     const recipe = await Recipe.findById(req.params.id);
-    console.log('---This is req.params.id: ' + req.params.id)
     res.render('recipes/show', {
         title: 'Recipe Detail',
         recipe,
@@ -54,19 +53,36 @@ async function edit(req, res) {
         recipe,
     })
 }
-// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Errors/Not_a_function
 
 
 // https://www.mongodb.com/docs/manual/tutorial/update-documents/
+
 async function update(req, res) {
-    const recipe = await Recipe.update(req.params.id, req.body); //used when we made data
-    res.redirect(`/recipes/${req.params.id}`, {
-        recipe,
-    });
+    const recipe = await Recipe.findById(req.params.id); //find the recipe by id
+    console.log('--- Hey Paul --- This is req.params.id: ' + req.params.id)
+    recipe.name = req.body.name;
+    recipe.ingredients = req.body.ingredients;
+    recipe.instructions = req.body.instructions;
+    recipe.cookingTime = req.body.cookingTime;
+    recipe.category = req.body.category;
+    recipe.imageUrl = req.body.imageUrl;
+    await recipe.save();
+    res.redirect(`/recipes/${req.params.id}`);
 }
 
 
 
 
 
+
+
+
+
+
+
+
 /* -- DELETE -- */
+
+
+
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Errors/Not_a_function

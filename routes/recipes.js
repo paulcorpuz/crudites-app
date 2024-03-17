@@ -4,7 +4,7 @@ var recipesCtrl = require('../controllers/recipes');
 // var ensureLoggedIn = require('../config/ensureLoggedIn');
 
 // actual path based off server.js is /recipes
-// all paths start with /recipes (these are combined with server)
+// all paths start with /recipes (below are appended with the routers in server.js)
 
 
 // GET /recipes index  -- READ -- all recipes

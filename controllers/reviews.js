@@ -5,15 +5,16 @@ module.exports = {
     delete: deleteReview,
 };
 
+/* -- CREATE -- */
 async function create(req, res) {
     const recipe = await Recipe.findById(req.params.id);
     // req.body.user = req.user._id;
     // req.body.userName = req.user.name;
     // req.body.userAvatar = req.user.avatar;
-    // recipe.reviews.push(req.body);
+    recipe.reviews.push(req.body);
     try {
         await recipe.save();
-        res.render('recipeDetail', { recipe: recipe });
+        // res.render('recipeDetail', { recipe: recipe });
     } catch (err) {
         console.log(err);
     }
@@ -21,6 +22,7 @@ async function create(req, res) {
     res.redirect(`/recipes/${recipe._id}`);
 }
 
+/* -- DELETE -- */
 async function deleteReview(req, res) {
     const recipe = await Recipe.findOne({});
     // Rogue user!

@@ -1,24 +1,24 @@
 <%- include('../partials/header') %>
 
-    <h2>This is the correct page Edit Recipe</h2>
+    <h2>This is the correct page - hiiiii paul Edit Recipe</h2>
 
     <h2>Edit Recipe</h2>
     <form action="/recipes/<%= recipe.id %>?_method=PUT" method="POST">
 
         <label>Name:
-            <input type="text" name="name" required">
+            <input type="text" name="name"">
         </label><br>
 
         <label>Ingredients(separate with comma):
-            <input type="text" name="ingredients" required>
+            <input type="text" name="ingredients">
         </label><br>
 
         <label>Cooking Instructions:
-            <textarea name="instructions" required></textarea>
+            <textarea name="instructions"></textarea>
         </label><br>
 
         <label>Cooking Time (Minutes):
-            <input type="number" name="cookingTime" required min="0" max="9999">
+            <input type="number" name="cookingTime" min="0" max="9999">
         </label><br>
 
         <label>Category:
