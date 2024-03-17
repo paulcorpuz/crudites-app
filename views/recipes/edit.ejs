@@ -1,12 +1,12 @@
 <%- include('../partials/header') %>
 
-    <h2>Recipe New</h2>
+    <h2>This is the correct page Edit Recipe</h2>
 
-    <h2>Add new Recipe</h2>
-    <form action="/recipes" method="POST">
+    <h2>Edit Recipe</h2>
+    <form action="/recipes/<%= recipe.id %>?_method=PUT" method="POST">
 
         <label>Name:
-            <input type="text" name="name" required>
+            <input type="text" name="name" required">
         </label><br>
 
         <label>Ingredients(separate with comma):
@@ -36,12 +36,12 @@
             <input type="string" name="imageUrl">
         </label><br>
 
-        <button type="submit">Add Recipe!!!</button>
+        <button type="submit">Update Recipe</button>
     
     </form>
     <p>
-        <%= errorMsg %>
+
     </p>
 
 
-    <%- include('../partials/footer') %>
+<%- include('../partials/footer') %>

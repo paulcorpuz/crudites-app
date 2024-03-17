@@ -1,31 +1,32 @@
 var express = require('express');
 var router = express.Router();
-const recipesCtrl = require('../controllers/recipes');
+var recipesCtrl = require('../controllers/recipes');
+// var ensureLoggedIn = require('../config/ensureLoggedIn');
 
 // actual path based off server.js is /recipes
-// all paths start with /recipes
-//these are combined with server
+// all paths start with /recipes (these are combined with server)
 
 
-/* -- CREATE -- */
-// GET /recipes/new -- Add new recipe
-router.get('/new', recipesCtrl.new);
-// POST /flights
+// GET /recipes index  -- READ -- all recipes
+router.get('/', recipesCtrl.index)
+// GET /recipes/new
+router.get('/new', recipesCtrl.new); // new has to be before show route
+// GET /recipes/:id -- READ --
+router.get('/:id', recipesCtrl.show)
+// GET edit a skill --> /skills/:id/edit
+router.get('/:id/edit', recipesCtrl.edit);
+
+
+// POST /flights -- CREATE -- add new recipe
 router.post('/', recipesCtrl.create)
 
-
-/* -- READ -- */
-// GET /recipes index
-router.get('/', recipesCtrl.index)
-
-// GET /recipes/:id
-router.get('/:id', recipesCtrl.show)
+// PUT /:id -- UPDATE -- edit recipe
+router.put('/:id', recipesCtrl.update);
 
 
 
-/* -- UPDATE -- */
 /* -- DELETE -- */
-
+// router.delete('/:id', recipesCtrl.delete);
 
 
 

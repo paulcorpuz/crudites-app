@@ -7,6 +7,13 @@ const reviewSchema = new Schema({
         type: String,
         required: true
     },
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+        // required:true
+    },
+    userName: String,
+    userAvatar: String,
 }, {
     timestamps: true
 });
@@ -20,10 +27,10 @@ const recipeSchema = new Schema({
             type: String,
             required: true,
         }],
-        instructions:{
+        instructions:[{
             type: String,
             required: true,
-        },
+        }],
         cookingTime:{
             type: Number,
             required: true,

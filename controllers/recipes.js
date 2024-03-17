@@ -3,15 +3,16 @@ const Recipe = require('../models/recipe');
 
 
 module.exports = {
-    new: newRecipe,
-    create,
     index,
     show,
+    new: newRecipe,
+    create,
+    edit,
+    update,
 };
 
 
-
-/* -- CREATE -- */
+ /* -- CREATE -- */
 function newRecipe(req, res) {
     const newRecipe = new Recipe();
     res.render('recipes/new', {
@@ -38,6 +39,7 @@ async function index(req, res) {
 }
 async function show(req, res) {
     const recipe = await Recipe.findById(req.params.id);
+    console.log('---This is req.params.id: ' + req.params.id)
     res.render('recipes/show', {
         title: 'Recipe Detail',
         recipe,
@@ -46,4 +48,25 @@ async function show(req, res) {
 
 
 /* -- UPDATE -- */
+async function edit(req, res) {
+    const recipe = await Recipe.findById(req.params.id) //object
+    res.render('recipes/edit', {  //what ejs page to 
+        recipe,
+    })
+}
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Errors/Not_a_function
+
+
+// https://www.mongodb.com/docs/manual/tutorial/update-documents/
+async function update(req, res) {
+    const recipe = await Recipe.update(req.params.id, req.body); //used when we made data
+    res.redirect(`/recipes/${req.params.id}`, {
+        recipe,
+    });
+}
+
+
+
+
+
 /* -- DELETE -- */

@@ -3,20 +3,20 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-//Oauth
-var session = require('express-session');
-var passport = require('passport');
+var session = require('express-session'); // OAuth
+var passport = require('passport'); // OAuth
 var methodOverride = require('method-override');
 
 require('dotenv').config();
-// connect to the database with AFTER the config vars are processed
-require('./config/database');
+require('./config/database'); // connect to the database AFTER the config vars are processed
 require('./config/passport');
 
 
-//TODO:
+/* ----- TODO: ROUTERS ----- */
 var indexRouter = require('./routes/index');
 var recipesRouter = require('./routes/recipes');
+var reviewsRouter = require('./routes/reviews');
+
 
 var app = express();
 
@@ -24,13 +24,17 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+
+/* ----- MIDDLEWARE ----- */ //express app.use() method mount MIDDLEWARE into its MIDDLEWARE pipeline */
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-//oAuth
 app.use(methodOverride('_method'));
+
+
+/* ----- OAUTH MIDDLEWARE ----- */
 app.use(session({
   secret: process.env.SECRET,
   resave: false,
@@ -38,18 +42,19 @@ app.use(session({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
-// Add this middleware BELOW passport middleware
 app.use(function (req, res, next) {
   res.locals.user = req.user;
   next();
 });
 
 
-//TODO:
-// the first arg is the "starts with" path
-// the paths within the route modules are appended to the starts with paths
+/* ----- TODO: ROUTERS ----- */ // the first arg is the "starts with" path. The paths within the route modules are appended to the starts with paths
 app.use('/', indexRouter);
 app.use('/recipes', recipesRouter);
+app.use('/', reviewsRouter);
+
+
+
 
 
 
