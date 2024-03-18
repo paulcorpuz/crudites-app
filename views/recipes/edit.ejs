@@ -3,10 +3,10 @@
     <h2>This is the correct page - hiiiii paul Edit Recipe</h2>
 
     <h2>Edit Recipe</h2>
-    <form action="/recipes/<%= recipe.id %>?_method=PUT" method="POST">
+    <form action="/recipes/<%= recipe._id %>/" method="POST">
 
         <label>Name:
-            <input type="text" name="name"">
+            <input type="text" name="name" value="<%= recipe.name %>">
         </label><br>
 
         <label>Ingredients(separate with comma):
@@ -18,7 +18,7 @@
         </label><br>
 
         <label>Cooking Time (Minutes):
-            <input type="number" name="cookingTime" min="0" max="9999">
+            <input type="number" name="cookingTime" min="0" max="9999" value="<%= recipe.cookingTime %>">
         </label><br>
 
         <label>Category:
@@ -33,15 +33,49 @@
         </label><br>
 
         <label>Image URL:
-            <input type="string" name="imageUrl">
+            <input type="string" name="imageUrl" value="<%= recipe.imageURL %>">
         </label><br>
 
         <button type="submit">Update Recipe</button>
-    
     </form>
-    <p>
 
-    </p>
+
+
+
+
+
+
+
+<br><br>
+<section>
+    <div>
+        11.33AM Add -- Ingredients List:
+        <ul>
+            <% recipe.ingredients.forEach(function(eachIngredient) { %>
+                <li><%= eachIngredient %></li>
+            <% }); %>
+        </ul>
+    </div>
+</section>
+
+<br><br> 
+<form action="/recipes/<%= recipe._id %>" method="POST">
+    <label>11.33AM Add -- Ingredients:</label>
+    <input type="text" name="ingredient">
+    <input type="submit" value="PUSH Ingredients">
+</form>
+
+
+
+
+
+
+
+
+
+
+<p>
+</p>
 
 
 <%- include('../partials/footer') %>

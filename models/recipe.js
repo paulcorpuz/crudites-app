@@ -21,19 +21,15 @@ const reviewSchema = new Schema({
 const recipeSchema = new Schema({
         name: {
             type: String,
-            required: true,
         },
         ingredients:[{
             type: String,
-            required: true,
         }],
         instructions:[{
             type: String,
-            required: true,
         }],
         cookingTime:{
             type: Number,
-            required: true,
             min: 0,
             max: 9999,
         },
@@ -51,7 +47,9 @@ const recipeSchema = new Schema({
 });
 
 
+// -- need OAuth, add in user, recipes by user .find, recipe.user.id = ~
 
+// TODO: Aad user to recipe into 
 
 
 
@@ -63,4 +61,22 @@ const recipeSchema = new Schema({
 
 /* TODO: research on allergens
 https://farrp.unl.edu/informallbig8
+
+in mongo, 
+
+_id
+name
+ingredients
+instructions
+cookingTime
+category
+imageUrl
+reviews:
+createdAt ---use this ---
+updatedAt ---use this --- 
+
+
+
+
+
 */

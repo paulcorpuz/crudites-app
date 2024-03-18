@@ -17,8 +17,11 @@ router.get('/:id', recipesCtrl.show)
 router.get('/:id/edit', recipesCtrl.edit);
 
 
-// POST /flights -- CREATE -- add new recipe
+// POST /recipe -- CREATE -- add new recipe
 router.post('/', recipesCtrl.create)
+// POST /recipe -- CREATE? -- add ingredients
+router.post('/recipes/:id/', recipesCtrl.addToIngredients);
+
 
 // PUT /:id -- UPDATE -- edit recipe
 router.put('/:id', recipesCtrl.update);

@@ -9,6 +9,7 @@ module.exports = {
     create,
     edit,
     update,
+    addToIngredients,
 };
 
 
@@ -22,8 +23,12 @@ function newRecipe(req, res) {
 async function create(req, res) {
     try {
         await Recipe.create(req.body);
-        // Always redirect after CUDing data
-        // We'll refactor to redirect to the recipes index after we implement it
+        name: req.body.name;
+        ingredients: req.body.ingredients;
+        instructions: req.body.instructions;
+        cookingTime: req.body.cookingTime;
+        category: req.body.category;
+        imageUrl: req.body.imageUrl;
         res.redirect('/recipes/');
     } catch (err) {
         // Typically some sort of validation error
@@ -53,24 +58,49 @@ async function edit(req, res) {
         recipe,
     })
 }
-
-
-// https://www.mongodb.com/docs/manual/tutorial/update-documents/
-
 async function update(req, res) {
     const recipe = await Recipe.findById(req.params.id); //find the recipe by id
-    console.log('--- Hey Paul --- This is req.params.id: ' + req.params.id)
+    // console.log('--- Hey Paul --- This is req.params.id: ' + req.params.id)
     recipe.name = req.body.name;
-    recipe.ingredients = req.body.ingredients;
-    recipe.instructions = req.body.instructions;
+    recipe.ingredients = req.body.ingredients; // FIXME:
+    recipe.instructions = req.body.instructions; // FIXME:
     recipe.cookingTime = req.body.cookingTime;
     recipe.category = req.body.category;
     recipe.imageUrl = req.body.imageUrl;
     await recipe.save();
+    
     res.redirect(`/recipes/${req.params.id}`);
 }
 
+// async function addToIngredients(req, res) {
+//     const recipe = await Recipe.findById(req.params.id);
+//     recipe.ingredients.push(req.body.ingredients);
+//     await recipe.save();
+//     res.redirect(`/recipes/${recipe._id}/edit`)
+// }
 
+async function addToIngredients(req, res) {
+    const recipe = await Recipe.findById(req.params.id);
+    const ingredient = req.body.ingredients;
+    recipe.ingredients.push(ingredient);
+    await recipe.save();
+    res.redirect(`/recipes/${recipe._id}/edit`);
+}
+
+
+
+
+
+
+
+
+
+// https://www.mongodb.com/docs/manual/tutorial/update-documents/
+// Recipe.findOneAndUpdate
+// Recipe.findByIdAndUpdate
+
+// pass req.body
+// put
 
 
 
