@@ -3,99 +3,99 @@
     <h1>Edit</h1>
     <h1>-- Placeholder /recipes/:id/edit--</h1>
 
-    <h2>Edit Recipe</h2>
-    <form action="/recipes/<%= recipe._id %>/" method="POST">
 
-        <label>Name:
-            <input type="text" name="name" value="<%= recipe.name %>">
-        </label><br>
+    <form action="/recipes/<%= recipe._id %>" method="POST">
+        <fieldset>
+            <legend>Edit Recipe</legend>
+            <label for="rName">Name:</label>
+            <input type="text" id="rName" name="name" value="<%= recipe.name %>">
+            <br>
+<!-- FIXME: --> 
+            <label for="rIngredients">Ingredients (Please separate each ingredient with a semicolon, like be cool about
+                it):</label>
+                <textarea id="rIngredients" name="ingredients"><%= recipe.ingredients.join('; ') %></textarea>
+            <br>
+<!-- FIXME: -->
+            <label for="rInstructions">Cooking Instructions:</label>
+            <textarea id="rInstructions" name="instructions"><%= recipe.instructions.join('; ') %></textarea>
+            <br>
+            <label for="rCookingTime">Cooking Time (Minutes):</label>
+            <input type="number" id="rCookingTime" name="cookingTime" min="0" max="9999"
+                value="<%= recipe.cookingTime %>">
+            <br>
+            <label>Category:
+                <select name="category">
+                    <option value="Appetizer" <%= recipe.category === 'Appetizer' ? 'selected' : '' %>>Appetizer</option>
+                    <option value="Dessert" <%= recipe.category === 'Dessert' ? 'selected' : '' %>>Dessert</option>
+                    <option value="Drinks" <%= recipe.category === 'Drinks' ? 'selected' : '' %>>Drinks</option>
+                    <option value="Entree" <%= recipe.category === 'Entree' ? 'selected' : '' %>>Entrée</option>
+                    <option value="Other" <%= recipe.category === 'Other' ? 'selected' : '' %>>Other</option>
+                    <option value="Side Dish" <%= recipe.category === 'Side Dish' ? 'selected' : '' %>>Side Dish</option>
+                </select>
+            </label>
+            <br>
+            <label for="rImageUrl">Image URL:</label>
+            <input type="string" id="rImageUrl" name="imageUrl" value="<%= recipe.imageUrl %>">
+            <br>
+            <button type="submit">Update Recipe</button>
+        </fieldset>
+    </form>
 
-        <label>Ingredients(separate with comma):
-            <input type="text" name="ingredients">
-        </label><br>
 
-        <label>Cooking Instructions:
-            <textarea name="instructions"></textarea>
-        </label><br>
+    <br><br>
+    <section>
+        <div>
+            03.18 11.33AM Add -- Ingredients List:
+            <ul>
+                <% recipe.ingredients.forEach(function(eachIngredient) { %>
+                    <li>
+                        <%= eachIngredient %>
+                    </li>
+                    <% }); %>
+            </ul>
+        </div>
+    </section>
 
-        <label>Cooking Time (Minutes):
-            <input type="number" name="cookingTime" min="0" max="9999" value="<%= recipe.cookingTime %>">
-        </label><br>
+    <br><br>
+    <form action="/recipes/<%= recipe._id %>/addIngredients" method="POST">
+        <label> 03.18 11.33AM Add -- Ingredients:</label>
+        <input type="text" name="ingredients">
+        <input type="submit" value="PUSH Ingredients">
+    </form>
 
-        <label>Category:
-            <select name="category">
-                <option value="Appetizer">Appetizer</option>
-                <option value="Dessert">Dessert</option>
-                <option value="Drinks">Drinks</option>
-                <option value="Entree">Entrée</option>
-                <option value="Other">Other</option>
-                <option value="Side Dish">Side Dish</option>
-            </select>
-        </label><br>
 
-        <label>Image URL:
-            <input type="string" name="imageUrl" value="<%= recipe.imageURL %>">
-        </label><br>
+    <br><br>
+    <section>
+        <div>
+            3PM Add -- Instructions List:
+            <ul>
+                <% recipe.instructions.forEach(function(eachInstruction) { %>
+                    <li>
+                        <%= eachInstruction %>
+                    </li>
+                    <% }); %>
+            </ul>
+        </div>
+    </section>
 
-        <button type="submit">Update Recipe</button>
+
+    <br><br>
+    <form action="/recipes/<%= recipe._id %>/addInstructions" method="POST">
+        <label>3PM Add -- Instructions:</label>
+        <input type="text" name="instructions">
+        <input type="submit" value="PUSH Instructions">
     </form>
 
 
 
-<br><br>
-<section>
-    <div>
-        11.33AM Add -- Ingredients List:
-        <ul>
-            <% recipe.ingredients.forEach(function(eachIngredient) { %>
-                <li><%= eachIngredient %></li>
-            <% }); %>
-        </ul>
-    </div>
-</section>
-
-<br><br> 
-<form action="/recipes/<%= recipe._id %>/addIngredients" method="POST">
-    <label>11.33AM Add -- Ingredients:</label>
-    <input type="text" name="ingredients">
-    <input type="submit" value="PUSH Ingredients">
-</form>
 
 
 
 
 
 
-<br><br>
-<section>
-    <div>
-        3PM Add -- Instructions List:
-        <ul>
-            <% recipe.instructions.forEach(function(eachInstruction) { %>
-                <li><%= eachInstruction %></li>
-            <% }); %>
-        </ul>
-    </div>
-</section>
+    <p>
+    </p>
 
 
-<br><br> 
-<form action="/recipes/<%= recipe._id %>/addInstructions" method="POST">
-    <label>3PM Add -- Instructions:</label>
-    <input type="text" name="instructions">
-    <input type="submit" value="PUSH Instructions">
-</form>
-
-
-
-
-
-
-
-
-
-<p>
-</p>
-
-
-<%- include('../partials/footer') %>
+    <%- include('../partials/footer') %>

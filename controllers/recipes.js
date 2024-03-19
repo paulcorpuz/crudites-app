@@ -23,16 +23,23 @@ function newRecipe(req, res) {
 }
 async function create(req, res) {
     try {
-        await Recipe.create(req.body);
-        name: req.body.name;
-        ingredients: req.body.ingredients;
-        instructions: req.body.instructions;
-        cookingTime: req.body.cookingTime;
-        category: req.body.category;
-        imageUrl: req.body.imageUrl;
+        const { name, ingredients, instructions, cookingTime, category, imageUrl } = req.body;
+        const ingredientsArray = ingredients.split(';').map(function(ingredient) {
+            return ingredient.trim();
+        });
+        const instructionsArray = instructions.split(';').map(function(instruction) {
+            return instruction.trim();
+        });
+        await Recipe.create({
+            name,
+            ingredients: ingredientsArray,
+            instructions: instructionsArray,
+            cookingTime,
+            category,
+            imageUrl
+        });
         res.redirect('/recipes/');
     } catch (err) {
-        // Typically some sort of validation error
         console.log(err);
         res.render('recipes/new', { errorMsg: err.message });
     }
@@ -60,25 +67,55 @@ async function edit(req, res) {
     })
 }
 async function update(req, res) {
-    const recipe = await Recipe.findById(req.params.id); //find the recipe by id
-    // console.log('--- Hey Paul --- This is req.params.id: ' + req.params.id)
-    recipe.name = req.body.name;
-    recipe.ingredients = req.body.ingredients; // FIXME:
-    recipe.instructions = req.body.instructions; // FIXME:
-    recipe.cookingTime = req.body.cookingTime;
-    recipe.category = req.body.category;
-    recipe.imageUrl = req.body.imageUrl;
-    await recipe.save();
-    
-    res.redirect(`/recipes/${req.params.id}`);
+    try {
+        const recipe = await Recipe.findById(req.params.id); // Find the recipe by id
+        const { name, ingredients, instructions, cookingTime, category, imageUrl } = req.body;
+        // handle ingredients and instructions like the create function 
+        const ingredientsArray = ingredients.split(';').map(function(ingredient) {
+            return ingredient.trim();
+        });
+        const instructionsArray = instructions.split(';').map(function(instruction) {
+            return instruction.trim();
+        });
+        // Update recipe properties
+        recipe.name = name;
+        recipe.ingredients = ingredientsArray;
+        recipe.instructions = instructionsArray;
+        recipe.cookingTime = cookingTime;
+        recipe.category = category;
+        recipe.imageUrl = imageUrl;
+        // Save NOT create
+        await recipe.save();
+        // Redirect to the updated recipe's page
+        res.redirect(`/recipes/${req.params.id}`);
+    } catch (err) {
+        console.log(err);
+        res.render('recipes/edit', { errorMsg: err.message });
+    }
 }
 
-// async function addToIngredients(req, res) {
-//     const recipe = await Recipe.findById(req.params.id);
-//     recipe.ingredients.push(req.body.ingredients);
-//     await recipe.save();
-//     res.redirect(`/recipes/${recipe._id}/edit`)
-// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 async function addToIngredients(req, res) {
     const recipe = await Recipe.findById(req.params.id);
@@ -102,7 +139,7 @@ async function addToInstructions(req, res) {
 
 
 
-
+// https://www.codementor.io/@prasadsaya/working-with-arrays-in-mongodb-16s303gkd3
 // https://www.mongodb.com/docs/manual/tutorial/update-documents/
 // Recipe.findOneAndUpdate
 // Recipe.findByIdAndUpdate
