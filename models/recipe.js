@@ -42,6 +42,11 @@ const recipeSchema = new Schema({
             type: String,
         },
         reviews: [reviewSchema],
+        user: {
+            type: Schema.Types.ObjectId,
+            ref: 'User',
+            // required:true
+        },
         }, {
     timestamps: true
 });

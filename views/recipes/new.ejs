@@ -1,28 +1,28 @@
 <%- include('../partials/header') %>
 
-    <h2>Recipe New</h2>
+    <h1>New</h1>
+    <h1>-- Placeholder /recipes/new --</h1>
 
-    <h2>Add new Recipe</h2>
+
     <form action="/recipes" method="POST">
-
-        <label>Name:
-            <input type="text" name="name">
-        </label><br>
-
-        <label>Ingredients(separate with comma):
-            <input type="text" name="ingredients">
-        </label><br>
-
-        <label>Cooking Instructions:
-            <textarea name="instructions"></textarea>
-        </label><br>
-
-        <label>Cooking Time (Minutes):
-            <input type="number" name="cookingTime" min="0" max="9999">
-        </label><br>
-
-        <label>Category:
-            <select name="category">
+        <fieldset>
+            <legend>Add New Recipe:</legend>
+            <label for="rName">Name:</label>
+            <input type="text" id="rName" name="name">
+            <br>
+            <!-- FIXME: -->
+            <label for="rIngredients">Ingredients (One at a time??):</label>
+            <input type="text" id="rIngredients" name="ingredients">
+            <br>
+            <!-- FIXME: -->
+            <label for="rInstructions">Cooking Instructions (One at a time??):</label>
+            <textarea id="rInstructions" name="instructions"></textarea>
+            <br>
+            <label for="rCookingTime">Cooking Time (Minutes):</label>
+            <input type="number" id="rCookingTime" name="cookingTime" min="0" max="9999">
+            <br>
+            <label for="rCategory">Category:</label>
+            <select id="rCategory" name="category">
                 <option value="Appetizer">Appetizer</option>
                 <option value="Dessert">Dessert</option>
                 <option value="Drinks">Drinks</option>
@@ -30,15 +30,14 @@
                 <option value="Other">Other</option>
                 <option value="Side Dish">Side Dish</option>
             </select>
-        </label><br>
-
-        <label>Image URL:
-            <input type="string" name="imageUrl">
-        </label><br>
-
-        <button type="submit">Add Recipe!!!</button>
-    
+            <br>
+            <label for="rImageUrl">Image URL:</label>
+            <input type="string" id="rImageUrl" name="imageUrl">
+            <br>
+            <button type="submit">Add Recipe!!!</button>
+        </fieldset>
     </form>
+    <br><br>
     <p>
         <%= errorMsg %>
     </p>

@@ -1,22 +1,33 @@
+/* style for entire doc */
 * {
+/* google font */
+  font-family: "Open Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+
   box-sizing: border-box;
   font-family: Helvetica;
   color: #424748;
+  text-align: center;
+
   /* border-style: solid; */
 }
 
 
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-    border-style: dotted;
+  /* padding: 50px; */
+  font: 14px;
+  border-style: dotted;
 }
 
 a {
   color: #4d35b9;
 }
 
-body > nav {
+body>nav {
   grid-area: nav;
   background-color: #aec8eb7e;
   display: flex;
@@ -25,24 +36,21 @@ body > nav {
   padding: 0 20px 0 30px;
 }
 
-
-nav > a {
+/* nav bar css */
+nav>a {
   margin: 20px;
   text-decoration: none;
   padding: 10px;
   border-radius: 5px;
 }
-
-nav > a:hover:not(.active) {
+nav>a:hover:not(.active) {
   color: white;
   background-color: #424748;
 }
-
-nav > a.active {
+nav>a.active {
   color: white;
   cursor: default;
 }
-
 
 
 .login {
@@ -54,4 +62,32 @@ nav > a.active {
 
 .login img {
   height: 30px;
+}
+
+section {
+  margin: auto;
+  /* width: 80%; */
+  text-align: center;
+}
+
+form {
+  margin: auto;
+  width: fit-content;
+}
+
+
+
+
+
+
+
+/* FIXME: deal with this later */
+ul {
+  list-style-position: inside;
+  padding-left: 0;
+}
+
+ol {
+  list-style-position: inside;
+  padding-left: 0;
 }

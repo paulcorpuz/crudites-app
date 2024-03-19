@@ -1,17 +1,19 @@
 <%- include('../partials/header') %>
 
-<h2>All Recipes</h2>
+<h1>Index</h1>
+<h1>-- Placeholder /recipes (index) --</h1>
 
 <br><br>
 
 <table>
     <thead>
         <tr>
-            <th>Image</th>
+            <th>(placeholder) Image</th>
             <th>Name</th>
             <th>Category</th>
             <th>Cooking Time (Minutes)</th>
-            <th>Recipe Detail</th>
+            <th>Date Added</th>
+            <th>(placeholder) Recipe Detail</th>
         </tr>
     </thead>
 
@@ -19,17 +21,16 @@
         <% recipes.forEach(function(r) { %>
             <tr>
                 <td>
-                    <!-- FIXME: if imageURL AND imageURL is empty or only whitespace, display image -->
                     <% if (r.imageUrl) { %>
-                        <img src="<%= r.imageUrl %>" alt="Recipe Image" style="width: 100px; height: 100px;">
+                        <img src="<%= r.imageUrl %>" alt="Recipe Image" style="width:90px; height:90px;">
                     <% } else { %>
-                        <!-- <img src="https://i.imgur.com/on1iU8m.png" alt="Placeholder Image" style="width: 100px; height: 100px;"> -->
-                        <img src="/images/ojigi_kuma.png" alt="Placeholder Image" style="width: 100px; height: 100px;">
+                        <img src="/images/ojigi_kuma.png" alt="Placeholder Image" style="width:90px; height:90px;">
                     <% } %>
                 </td>
                 <td><%= r.name %></td>
                 <td><%= r.category %></td>
                 <td><%= r.cookingTime %></td>
+                <td><%= r.createdAt.toLocaleDateString() %></td>
                 <td><a href="/recipes/<%= r._id %>">Recipe Detail</a></td>
             </tr>
             <% }); %>
