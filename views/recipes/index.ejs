@@ -1,47 +1,41 @@
 <%- include('../partials/header') %>
 
-<h1>Index</h1>
-<h1>-- Placeholder /recipes (index) --</h1>
+    <h1>Index</h1>
+    <h1>-- Placeholder /recipes (index) --</h1>
 
-<br><br>
+    <br><br>
 
-<table>
-    <thead>
-        <tr>
-            <th>(placeholder) Image</th>
-            <th>Name</th>
-            <th>Category</th>
-            <th>Cooking Time (Minutes)</th>
-            <th>Date Added</th>
-            <th>(placeholder) Recipe Detail</th>
-        </tr>
-    </thead>
-
-    <tbody>
-        <% recipes.forEach(function(r) { %>
+    <table>
+        <thead>
             <tr>
-                <td>
-                    <% if (r.imageUrl) { %>
-                        <img src="<%= r.imageUrl %>" alt="Recipe Image" style="width:90px; height:90px;">
-                    <% } else { %>
-                        <img src="/images/ojigi_kuma.png" alt="Placeholder Image" style="width:90px; height:90px;">
-                    <% } %>
-                </td>
-                <td><%= r.name %></td>
-                <td><%= r.category %></td>
-                <td><%= r.cookingTime %></td>
-                <td><%= r.createdAt.toLocaleDateString() %></td>
-                <td><a href="/recipes/<%= r._id %>">Recipe Detail</a></td>
+                <th>(placeholder) Image</th>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Cooking Time (Minutes)</th>
+                <th>Date Added</th>
+                <th>(placeholder) Recipe Detail</th>
             </tr>
-            <% }); %>
-    </tbody>
-</table>
+        </thead>
+
+        <tbody>
+            <% recipes.forEach(function(r) { %>
+                <tr>
+                    <td>
+                        <% if (r.imageUrl) { %>
+                            <img src="<%= r.imageUrl %>" alt="Recipe Image" style="width:90px; height:90px;">
+                        <% } else { %>
+                            <img src="/images/ojigi_kuma.png" alt="Placeholder Image" style="width:90px; height:90px;">
+                        <% } %>
+                    </td>
+                    <td><%= r.name %></td>
+                    <td><%= r.category %></td>
+                    <td><%= r.cookingTime %></td>
+                    <td><%= r.createdAt.toLocaleDateString() %></td>
+                    <td><a href="/recipes/<%= r._id %>">Recipe Detail</a></td>
+                </tr>
+                <% }); %>
+        </tbody>
+    </table>
+
 
 <%- include('../partials/footer') %>
-
-
-
-<!-- TODO: the placeholder image is not working, check what's wrong with it, 03/17
-https://www.w3schools.com/jsref/jsref_trim_string.asp 
-check why the source for placeholder image not working
--->

@@ -18,14 +18,13 @@ async function create(req, res) {
     } catch (err) {
         console.log(err);
     }
-    // Step 5:  Respond to the Request (redirect if data has been changed)
+    // Respond to the Request (redirect if data has been changed)
     res.redirect(`/recipes/${recipe._id}`);
 }
 
 /* -- DELETE -- */
 async function deleteReview(req, res) {
     const recipe = await Recipe.findOne({});
-    // Rogue user!
     if (!recipe) return res.redirect('/recipes');
     // Remove the review using the remove method available on Mongoose arrays
     recipe.reviews.remove(req.params.id);

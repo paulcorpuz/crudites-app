@@ -1,6 +1,6 @@
 /* style for entire doc */
 * {
-/* google font */
+  /* google font */
   font-family: "Open Sans", sans-serif;
   font-optical-sizing: auto;
   font-weight: 500;
@@ -43,10 +43,12 @@ nav>a {
   padding: 10px;
   border-radius: 5px;
 }
+
 nav>a:hover:not(.active) {
   color: white;
   background-color: #424748;
 }
+
 nav>a.active {
   color: white;
   cursor: default;

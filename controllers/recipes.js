@@ -14,7 +14,7 @@ module.exports = {
 };
 
 
- /* -- CREATE -- */
+/* -- CREATE -- */
 function newRecipe(req, res) {
     const newRecipe = new Recipe();
     res.render('recipes/new', {
@@ -24,10 +24,10 @@ function newRecipe(req, res) {
 async function create(req, res) {
     try {
         const { name, ingredients, instructions, cookingTime, category, imageUrl } = req.body;
-        const ingredientsArray = ingredients.split(';').map(function(ingredient) {
+        const ingredientsArray = ingredients.split(';').map(function (ingredient) {
             return ingredient.trim();
         });
-        const instructionsArray = instructions.split(';').map(function(instruction) {
+        const instructionsArray = instructions.split(';').map(function (instruction) {
             return instruction.trim();
         });
         await Recipe.create({
@@ -71,10 +71,10 @@ async function update(req, res) {
         const recipe = await Recipe.findById(req.params.id); // Find the recipe by id
         const { name, ingredients, instructions, cookingTime, category, imageUrl } = req.body;
         // handle ingredients and instructions like the create function 
-        const ingredientsArray = ingredients.split(';').map(function(ingredient) {
+        const ingredientsArray = ingredients.split(';').map(function (ingredient) {
             return ingredient.trim();
         });
-        const instructionsArray = instructions.split(';').map(function(instruction) {
+        const instructionsArray = instructions.split(';').map(function (instruction) {
             return instruction.trim();
         });
         // Update recipe properties
@@ -94,29 +94,7 @@ async function update(req, res) {
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/* -- UPDATE's friends -- */
 async function addToIngredients(req, res) {
     const recipe = await Recipe.findById(req.params.id);
     const ingredient = req.body.ingredients;
@@ -136,6 +114,11 @@ async function addToInstructions(req, res) {
 
 
 
+/* -- DELETE -- */
+// TODO: add?
+
+
+
 
 
 
@@ -146,18 +129,5 @@ async function addToInstructions(req, res) {
 
 // pass req.body
 // put
-
-
-
-
-
-
-
-
-
-
-/* -- DELETE -- */
-
-
 
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Errors/Not_a_function

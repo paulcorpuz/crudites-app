@@ -16,10 +16,11 @@ const userSchema = new Schema({
 
 module.exports = mongoose.model('User', userSchema);
 
+
+
 /*
 
-in mongo, 
-
+in mongo, it looks like this
 
 _id
 name

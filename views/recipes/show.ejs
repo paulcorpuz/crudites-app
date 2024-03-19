@@ -14,6 +14,7 @@
         <div><h2><%= recipe.name %> Recipe</h2></div>
         <div><h2>Category: <%= recipe.category %></h2></div>
         <div><h2>Cooking Time: <%= recipe.cookingTime %> Minutes</h2></div>
+
         <div><h2>Ingredients:</h2>
             <ul list-style="none" list-style-position="inside">
                 <% recipe.ingredients.forEach(function(eachIngredient) { %>
@@ -21,6 +22,7 @@
                 <% }); %>
             </ul>
         </div>
+
         <div><h2> Cooking Instructions:</h2>
             <ol>
                 <% recipe.instructions.forEach(function(eachInstruction) { %>
@@ -30,7 +32,7 @@
         </div>
     </section>
 
-<!-- FIXME: this needs to move later -->
+    <!-- FIXME: this needs to move later -->
     <h2>-- move this to "my recipes" page don't forget OAuth --</h2>
     <section>
         <form action="/recipes/<%= recipe.id%>/edit" method="GET">
@@ -51,8 +53,8 @@
     <br>
 
 
-<!-- FIXME: this needs to be centered -->
-<!-- thead is tableHeader, tr is tableRow -->
+    <!-- FIXME: this needs to be centered -->
+    <!-- thead is tableHeader, tr is tableRow -->
     <section>
         <% if (recipe.reviews.length) { %>
             <table>
@@ -82,9 +84,4 @@
     </section>
 
 
-
-
-
-
-
-    <%- include('../partials/footer') %>
+<%- include('../partials/footer') %>
