@@ -11,18 +11,46 @@
             <!-- <img src="../../public/images/ojigi_kuma.png" alt="Placeholder Image" style="width: 100px; height: 100px;"> -->
         <% } %>
     </div>
-    <div><%= recipe.name %> Recipe</div>
-    <div>Category: <%= recipe.category %></div>
-    <div><%= recipe.cookingTime %> Minutes</div>
+    <div><strong> <%= recipe.name %> Recipe </strong></div>
+    <div><strong> Category: <%= recipe.category %> </strong></div>
+    <div><strong> <%= recipe.cookingTime %> Minutes </strong></div>
+    
     <div>
-        Ingredients:
+        <strong>Ingredients:</strong>
         <ul>
             <% recipe.ingredients.forEach(function(eachIngredient) { %>
                 <li><%= eachIngredient %></li>
             <% }); %>
         </ul>
     </div>
-    <div>Cooking Instructions: <%= recipe.instructions %></div>
+
+
+
+    
+    <div>
+        <strong> Cooking Instructions: </strong>
+        <ul>
+            <% recipe.instructions.forEach(function(eachInstruction) { %>
+                <li><%= eachInstruction %></li>
+            <% }); %>
+        </ul>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </section>
 
 <br><br>

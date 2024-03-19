@@ -41,11 +41,6 @@
 
 
 
-
-
-
-
-
 <br><br>
 <section>
     <div>
@@ -59,12 +54,36 @@
 </section>
 
 <br><br> 
-<form action="/recipes/<%= recipe._id %>" method="POST">
+<form action="/recipes/<%= recipe._id %>/addIngredients" method="POST">
     <label>11.33AM Add -- Ingredients:</label>
-    <input type="text" name="ingredient">
+    <input type="text" name="ingredients">
     <input type="submit" value="PUSH Ingredients">
 </form>
 
+
+
+
+
+
+<br><br>
+<section>
+    <div>
+        3PM Add -- Instructions List:
+        <ul>
+            <% recipe.instructions.forEach(function(eachInstruction) { %>
+                <li><%= eachInstruction %></li>
+            <% }); %>
+        </ul>
+    </div>
+</section>
+
+
+<br><br> 
+<form action="/recipes/<%= recipe._id %>/addInstructions" method="POST">
+    <label>3PM Add -- Instructions:</label>
+    <input type="text" name="instructions">
+    <input type="submit" value="PUSH Instructions">
+</form>
 
 
 

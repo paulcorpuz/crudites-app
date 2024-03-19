@@ -10,6 +10,7 @@ module.exports = {
     edit,
     update,
     addToIngredients,
+    addToInstructions,
 };
 
 
@@ -87,6 +88,13 @@ async function addToIngredients(req, res) {
     res.redirect(`/recipes/${recipe._id}/edit`);
 }
 
+async function addToInstructions(req, res) {
+    const recipe = await Recipe.findById(req.params.id);
+    const instruction = req.body.instructions;
+    recipe.instructions.push(instruction);
+    await recipe.save();
+    res.redirect(`/recipes/${recipe._id}/edit`);
+}
 
 
 

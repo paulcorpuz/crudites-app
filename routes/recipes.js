@@ -20,7 +20,9 @@ router.get('/:id/edit', recipesCtrl.edit);
 // POST /recipe -- CREATE -- add new recipe
 router.post('/', recipesCtrl.create)
 // POST /recipe -- CREATE? -- add ingredients
-router.post('/recipes/:id/', recipesCtrl.addToIngredients);
+router.post('/:id/addIngredients', recipesCtrl.addToIngredients);
+// POST /recipe -- CREATE? -- add instructions
+router.post('/:id/addInstructions', recipesCtrl.addToInstructions);
 
 
 // PUT /:id -- UPDATE -- edit recipe
