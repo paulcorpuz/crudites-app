@@ -8,13 +8,14 @@ module.exports = {
 /* -- CREATE -- */
 async function create(req, res) {
     const recipe = await Recipe.findById(req.params.id);
-    // req.body.user = req.user._id;
-    // req.body.userName = req.user.name;
-    // req.body.userAvatar = req.user.avatar;
+    
+    // OAuth -- Add the user-centric info to req.body (the new review)
+    req.body.user = req.user._id;
+    req.body.userName = req.user.name;
+    req.body.userAvatar = req.user.avatar;
     recipe.reviews.push(req.body);
     try {
         await recipe.save();
-        // res.render('recipeDetail', { recipe: recipe });
     } catch (err) {
         console.log(err);
     }
@@ -24,7 +25,7 @@ async function create(req, res) {
 
 /* -- DELETE -- */
 async function deleteReview(req, res) {
-    const recipe = await Recipe.findOne({});
+    const recipe = await Recipe.findOne({ 'reviews._id': req.params.id, 'reviews.user': req.user._id }); //OAuth
     if (!recipe) return res.redirect('/recipes');
     // Remove the review using the remove method available on Mongoose arrays
     recipe.reviews.remove(req.params.id);

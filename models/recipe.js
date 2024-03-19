@@ -10,13 +10,14 @@ const reviewSchema = new Schema({
     user: {
         type: Schema.Types.ObjectId,
         ref: 'User',
-        // required:true
     },
     userName: String,
     userAvatar: String,
 }, {
     timestamps: true
 });
+// TODO: rating? ^^ update after OAuth 
+
 
 const recipeSchema = new Schema({
     name: {
@@ -45,7 +46,6 @@ const recipeSchema = new Schema({
     user: {
         type: Schema.Types.ObjectId,
         ref: 'User',
-        // required:true
     },
 }, {
     timestamps: true
@@ -56,15 +56,19 @@ const recipeSchema = new Schema({
 // TODO: Aad user to recipe into 
 
 
-
 // Compile the schema into a model and export it
 module.exports = mongoose.model('Recipe', recipeSchema);
 
 
 
-/* TODO: research on allergens
-https://farrp.unl.edu/informallbig8
 
+
+
+
+
+
+
+/* TODO:
 in mongo, this is what is looks like:
 
 _id
@@ -75,7 +79,7 @@ cookingTime
 category
 imageUrl
 reviews:
-users: --- added 03/18 --- FIXME:
+users: --- added 03/18 ---
 createdAt ---use this ---
 updatedAt ---use this --- 
 

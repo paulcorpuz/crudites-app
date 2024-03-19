@@ -32,26 +32,30 @@
         </div>
     </section>
 
+    
     <!-- FIXME: this needs to move later -->
     <h2>-- move this to "my recipes" page don't forget OAuth --</h2>
     <section>
+        <% if (user) { %>
         <form action="/recipes/<%= recipe.id%>/edit" method="GET">
             <button type="submit">Edit Recipe</button>
         </form>
+        <% } %>
     </section>
     <br><br>
 
 
     <section>
+        <% if (user) { %>
         <form action="/recipes/<%= recipe._id %>/reviews" method="POST">
             <label>Review:</label>
                 <textarea name="content"></textarea><br>
             <label>Rating:</label>
                 <input type="submit" value="Add Review">
         </form>
+        <% } %>
     </section>
     <br>
-
 
     <!-- FIXME: this needs to be centered -->
     <!-- thead is tableHeader, tr is tableRow -->
@@ -70,9 +74,11 @@
                             <td><%= r.createdAt.toLocaleDateString() %></td>
                             <td><%= r.content %></td>
                             <td>
+                            <% if (user?._id.equals(r.user)) { %>
                                 <form action="/reviews/<%= r._id %>?_method=DELETE" method="POST">
                                     <button type="submit">Delete X</button>
                                 </form>
+                            <% } %>
                             </td>
                         </tr>
                     <% }); %>

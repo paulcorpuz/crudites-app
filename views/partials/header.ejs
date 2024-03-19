@@ -17,12 +17,16 @@
 
 <body>
     <nav>
-        <a href="/">Home</a> |
-        <a href="/recipes">All Recipes</a> |
-        <a href="/recipes/new">Add a Recipe</a> |
-        <a href="/recipes/new">My Recipes</a> |
-
-        <a href="/logout">LOG OUT</a>
-        <a href="/auth/google" class="login">LOG IN&nbsp;<img src="https://i.imgur.com/FHjYyi0.png"></a>
-
+        <a href="/">Home</a>
+        <a href="/recipes">All Recipes</a>
+        <% if (user) { %>
+            <!-- <a href="/recipes/userIndex">My Recipes NOT WORKING</a> -->
+            <a href="/recipes/new">Add a Recipe</a>
+            <a href="/logout">Log Out</a>
+        <% } else { %>
+        <a href="/auth/google" class="login">Log In&nbsp;<img src="https://i.imgur.com/FHjYyi0.png"></a>
+        <% } %>
     </nav>
+
+
+<!-- TODO: pay attention to class="login" -->

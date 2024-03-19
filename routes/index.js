@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 const passport = require('passport');
-// const Recipe = require('../models/recipe');
 
 
 /* GET home page. */
@@ -38,27 +37,4 @@ router.get('/logout', function (req, res) {
 });
 
 
-// TODO: deleteALl clears all of data in recipeSchema
-// router.get('/deleteAll', async function (req, res, next) {
-//   await Recipe.deleteMany({})
-//   res.redirect('/');
-// });
-
-
-
-
-
-
-
-
-
-
-
 module.exports = router;
-
-
-
-/* -- CREATE -- */
-/* -- READ -- */
-/* -- UPDATE -- */
-/* -- DELETE -- */

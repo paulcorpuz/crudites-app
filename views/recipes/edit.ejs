@@ -3,8 +3,8 @@
     <h1>Edit</h1>
     <h1>-- Placeholder /recipes/:id/edit--</h1>
 
-
-    <form action="/recipes/<%= recipe._id %>" method="POST">
+    
+    <form action="/recipes/<%= recipe._id %>?_method=PUT" method="POST">
         <fieldset>
             <legend>Edit Recipe</legend>
             <label for="rName">Name:</label>
