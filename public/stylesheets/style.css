@@ -6,7 +6,7 @@
   font-weight: 500;
   font-style: normal;
   font-variation-settings:
-    "wdth" 100;
+      "wdth" 100;
 
   box-sizing: border-box;
   font-family: Helvetica;
@@ -14,82 +14,4 @@
   text-align: center;
 
   /* border-style: solid; */
-}
-
-
-body {
-  /* padding: 50px; */
-  font: 14px;
-  border-style: dotted;
-}
-
-a {
-  color: #4d35b9;
-}
-
-body>nav {
-  grid-area: nav;
-  background-color: #aec8eb7e;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0 20px 0 30px;
-}
-
-/* nav bar css */
-nav>a {
-  margin: 20px;
-  text-decoration: none;
-  padding: 10px;
-  border-radius: 5px;
-}
-
-nav>a:hover:not(.active) {
-  color: white;
-  background-color: #424748;
-}
-
-nav>a.active {
-  color: white;
-  cursor: default;
-}
-
-
-.login {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 34px;
-}
-
-.login img {
-  height: 30px;
-}
-
-section {
-  margin: auto;
-  /* width: 80%; */
-  text-align: center;
-}
-
-form {
-  margin: auto;
-  width: fit-content;
-}
-
-
-
-
-
-
-
-/* FIXME: deal with this later */
-ul {
-  list-style-position: inside;
-  padding-left: 0;
-}
-
-ol {
-  list-style-position: inside;
-  padding-left: 0;
 }

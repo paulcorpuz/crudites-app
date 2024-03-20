@@ -10,23 +10,56 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
         rel="stylesheet">
+    <!-- TODO: Bulma -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <!-- my beautiful CSS -->
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <title>Crudités</title>
 </head>
 
+
+
+
+    <!-- TODO: pay attention to class="login" -->
+
+
 <body>
-    <nav>
-        <a href="/">Home</a>
-        <a href="/recipes">All Recipes</a>
-        <% if (user) { %>
-            <a href="/recipes/userIndex">My Recipes (it's working!!) </a>
-            <a href="/recipes/new">Add a Recipe</a>
-            <a href="/logout">Log Out</a>
-        <% } else { %>
-        <a href="/auth/google" class="login">Log In&nbsp;<img src="https://i.imgur.com/FHjYyi0.png"></a>
-        <% } %>
+    <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="/">
+                <img src="/images/ojigi_kuma.png" width="100%" height="auto">
+            </a>
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
+                data-target="navbarBasicExample">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-start">
+                <a href="/" class="navbar-item">Home</a>
+                <a href="/recipes" class="navbar-item">All Recipes</a>
+                <% if (user) { %>
+                    <a href="/recipes/userIndex" class="navbar-item">My Recipes</a>
+                    <a href="/recipes/new" class="navbar-item">Add a Recipe</a>
+                <% } %>
+                <!-- TODO: TODO: TODO: TODO:-->
+                <a href="/" class="navbar-item">About</a>
+            </div>
+
+            <div class="navbar-end">
+                <div class="navbar-item">
+                        <div class="buttons">
+                            <% if (user) { %>
+                                <a href="/logout" class="button is-warning">Log Out</a>
+                            <% } else { %>
+                                <a href="/auth/google" class="button is-warning">Log In</a>
+                            <% } %>
+                        </div>
+                </div>
+            </div>
+        </div>
     </nav>
 
-
-<!-- TODO: pay attention to class="login" -->
