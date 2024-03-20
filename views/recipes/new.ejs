@@ -1,50 +1,75 @@
 <%- include('../partials/header') %>
 
-    <h1>New</h1>
-    <h1>-- Placeholder /recipes/new --</h1>
+    <section class="hero">
+        <div class="hero-body">
+            <p class="title">New</p>
+            <p class="subtitle">Placeholder /recipes/new</p>
+        </div>
+    </section>
 
+<form action="/recipes" method="POST">
+    <fieldset>
+        <legend>Add a Recipe - Placeholder text, change this</legend>
+        <br><br>
 
-    <form action="/recipes" method="POST">
-        <fieldset>
-            <legend>Add New Recipe:</legend>
-            <label for="rName">Name:</label>
-            <input type="text" id="rName" name="name" placeholder="e.g. Crudités">
-            <br>
+        <div class="field">
+            <label class="label">Name</label>
+            <div class="control">
+                <input class="input" type="text" name="name" placeholder="e.g. Crudités">
+            </div>
+            <p class="help">This is a help text</p>
+        </div>
 
-            <!-- FIXME: -->
-            <label for="rIngredients">Ingredients - Please separate each ingredient with a
-                <strong>semicolon</strong>:</label>
-            <textarea id="rIngredients" name="ingredients"
-                placeholder="e.g. Assorted vegetables; 1 cup plain yogurt..."></textarea>
-            <br>
+        <div class="field">
+            <label class="label">(Direct) Image URL</label>
+            <div class="control">
+                <input class="input" type="string" name="imageUrl" placeholder="e.g. https://i.imgur.com/N46VgZu.png">
+            </div>
+            <p class="help">This is a help text</p>
+        </div>
 
-            <!-- FIXME: -->
-            <label for="rInstructions">Cooking Instructions - Please separate each ingredient with a
-                <strong>semicolon</strong>:</label>
-            <textarea id="rInstructions" name="instructions"
-                placeholder="e.g. Prepare vegetables; Combine the plain yogurt…"></textarea>
-            <br>
-            <label for="rCookingTime">Cooking Time (Minutes):</label>
-            <input type="number" id="rCookingTime" name="cookingTime" min="0" max="9999" placeholder="10">
-            <br>
-            <label for="rCategory">Category:</label>
-            <select id="rCategory" name="category">
-                <option value="Appetizer">Appetizer</option>
-                <option value="Dessert">Dessert</option>
-                <option value="Drinks">Drinks</option>
-                <option value="Entree">Entrée</option>
-                <option value="Other">Other</option>
-                <option value="Side Dish">Side Dish</option>
-            </select>
-            <br>
-            <label for="rImageUrl">Image URL:</label>
-            <input type="string" id="rImageUrl" name="imageUrl" placeholder="https://i.imgur.com/N46VgZu.png">
-            <br>
-            <button type="submit">Add Recipe!!!</button>
-        </fieldset>
-    </form>
-    <br><br>
+        <div class="control">
+            <label class="label">Category</label>
+            <div class="select">
+                <select name="category">
+                    <option value="Appetizer">Appetizer</option>
+                    <option value="Dessert">Dessert</option>
+                    <option value="Drinks">Drinks</option>
+                    <option value="Entree">Entrée</option>
+                    <option value="Other">Other</option>
+                    <option value="Side Dish">Side Dish</option>
+                </select>
+            </div>
+        </div>
 
+        <div class="field">
+            <label class="label">Cooking Time (in Minutes)</label>
+            <div class="control">
+                <input class="input" type="number" name="cookingTime" min="0" max="9999" placeholder="e.g. 10">
+            </div>
+            <p class="help">'Cooking Time (in Hours)' is a WIP like me</p>
+        </div>
 
+        <div class="field">
+            <label class="label">Ingredients</label>
+            <div class="control">
+                <input class="input" type="string" name="ingredients" placeholder="e.g. Assorted vegetables; 1 cup plain yogurt...">
+            </div>
+            <p class="help">Please separate each ingredient with a <strong>semicolon</strong>, or I will cry</p>
+        </div>
+
+        <div class="field">
+            <label class="label">Cooking Instructions</label>
+            <div class="control">
+                <input class="input" type="string" name="instructions" placeholder="e.g. Prepare vegetables; Combine the plain yogurt...">
+            </div>
+            <p class="help">Please separate each instruction with a <strong>semicolon</strong>, or I will cry</p>
+        </div>
+
+        <div class="buttons">
+            <button class="button is-primary" type="submit">Add Recipe</button>
+        </div>
+    </fieldset>
+</form>
 
 <%- include('../partials/footer') %>
