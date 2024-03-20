@@ -56,7 +56,7 @@ async function create(req, res) {
 
 /* -- READ -- */
 async function index(req, res) {
-    const recipes = await Recipe.find({})
+    const recipes = await Recipe.find({}).sort({"updatedAt": -1})
     res.render('recipes/index', { recipes });
 }
 async function show(req, res) {
@@ -68,7 +68,7 @@ async function show(req, res) {
 }
 
 async function userIndex(req, res) {
-    const recipes = await Recipe.find({})
+    const recipes = await Recipe.find({}).sort({"createdAt": -1})
     res.render('recipes/userIndex', { recipes });
 }
 

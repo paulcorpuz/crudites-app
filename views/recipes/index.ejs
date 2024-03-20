@@ -12,7 +12,7 @@
                 <th>Name</th>
                 <th>Category</th>
                 <th>Cooking Time (Minutes)</th>
-                <th>Date Added</th>
+                <th>Last Updated</th>
                 <th>(placeholder) Recipe Detail</th>
             </tr>
         </thead>
@@ -30,7 +30,7 @@
                     <td><%= r.name %></td>
                     <td><%= r.category %></td>
                     <td><%= r.cookingTime %></td>
-                    <td><%= r.createdAt.toLocaleDateString() %></td>
+                    <td><%= r.updatedAt.toLocaleDateString() %></td>
                     <td><a href="/recipes/<%= r._id %>">Recipe Detail</a></td>
                 </tr>
                 <% }); %>
