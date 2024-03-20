@@ -1,6 +1,68 @@
 <%- include('../partials/header') %>
 
-<h1>userIndex</h1>
-<h1>-- Placeholder /recipes/userIndex --</h1>
+    <h1>userIndex</h1>
+    <h1>-- Placeholder /recipes/userIndex --</h1>
+
+    <br><br>
+
+<!-- FIXME: FIXME: FIXME:-->
+    <section>
+        <%= if (user?._id. === recipe.user) { %>
+    <table>
+        <thead>
+            <tr>
+                <th>(placeholder) Image</th>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Cooking Time (Minutes)</th>
+                <th>Date Added</th>
+                <th>(placeholder) Recipe Detail</th>
+                <th>(placeholder) Edit Recipe</th>
+                <th>(placeholder) Delete Recipe</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <% recipes.forEach(function(r) { %>
+                <tr>
+                    <td>
+                        <% if (r.imageUrl) { %>
+                            <img src="<%= r.imageUrl %>" alt="Recipe Image" style="width:90px; height:90px;">
+                        <% } else { %>
+                            <img src="/images/ojigi_kuma.png" alt="Placeholder Image" style="width:90px; height:90px;">
+                        <% } %>
+                    </td>
+                    <td><%= r.name %></td>
+                    <td><%= r.category %></td>
+                    <td><%= r.cookingTime %></td>
+                    <td><%= r.createdAt.toLocaleDateString() %></td>
+                    <td><a href="/recipes/<%= r._id %>">Recipe Detail</a></td>
+
+
+<!-- TODO: TODO: TODO: TODO: -->
+                    <td>
+                        <% if (user?._id.equals(r.user)) { %>
+                            <td>
+                                <form action="/recipes/<%= r._id %>/edit" method="GET">
+                                    <button type="submit">Edit Recipe</button>
+                                </form>
+                            </td>
+                        <% } %>
+                    </td>                   
+                    <td>
+                        <% if (user?._id.equals(r.user)) { %>
+                            <form action="/recipes/<%= r._id %>?_method=DELETE" method="POST">
+                                <button type="submit">Delete Button</button>
+                            </form>
+                        <% } %>
+                    </td>
+                </tr>
+                <% }); %>
+        </tbody>
+    </table>
+    <% } else { %>
+        <h5>No Reviews Yet &#128547</h5>
+    <% } %>
+</section>
 
 <%- include('../partials/footer') %>

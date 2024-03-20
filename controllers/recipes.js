@@ -4,6 +4,7 @@ const Recipe = require('../models/recipe');
 
 module.exports = {
     index,
+    userIndex,
     show,
     new: newRecipe,
     create,
@@ -11,6 +12,7 @@ module.exports = {
     update,
     addToIngredients,
     addToInstructions,
+    delete: deleteRecipe,
 };
 
 
@@ -23,7 +25,11 @@ function newRecipe(req, res) {
 }
 async function create(req, res) {
     try {
-        const { name, ingredients, instructions, cookingTime, category, imageUrl } = req.body;
+        const { name, ingredients, instructions, cookingTime, category, imageUrl, } = req.body;
+        // OAuth -- Add the user-centric info to req.body (the new recipe) user info add it to req.body
+        req.body.user = req.user._id;
+        req.body.userName = req.user.name;
+        req.body.userAvatar = req.user.avatar;
         const ingredientsArray = ingredients.split(';').map(function (ingredient) {
             return ingredient.trim();
         });
@@ -36,7 +42,10 @@ async function create(req, res) {
             instructions: instructionsArray,
             cookingTime,
             category,
-            imageUrl
+            imageUrl,
+            user: req.body.user,
+            userName: req.body.userName,
+            userAvatar: req.body.userAvatar,
         });
         res.redirect('/recipes/');
     } catch (err) {
@@ -57,6 +66,14 @@ async function show(req, res) {
         recipe,
     })
 }
+
+async function userIndex(req, res) {
+    const recipes = await Recipe.find({})
+    res.render('recipes/userIndex', { recipes });
+}
+
+
+
 
 
 /* -- UPDATE -- */
@@ -112,11 +129,17 @@ async function addToInstructions(req, res) {
 }
 
 
-
-
 /* -- DELETE -- */
-// TODO: add?
-
+async function deleteRecipe(req, res) {
+    const recipe = await Recipe.findOne({ 'recipes._id': req.params.id, 'recipes.user': req.user._id }); //OAuth
+    if (!recipe) return res.redirect('/recipes/userIndex');
+    // Remove the review using the remove method available on Mongoose arrays
+    recipe.reviews.remove(req.params.id);
+    // Save the updated recipe doc
+    await recipe.save();
+    // Redirect back to the recipe's show view
+    res.redirect(`/recipes/userIndex`);
+}
 
 
 

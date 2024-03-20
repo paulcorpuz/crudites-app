@@ -10,6 +10,8 @@ var ensureLoggedIn = require('../config/ensureLoggedIn');
 
 // GET /recipes index  -- READ -- all recipes
 router.get('/', recipesCtrl.index)
+// GET /recipes/userIndex
+router.get('/userIndex', ensureLoggedIn, recipesCtrl.userIndex); // new has to be before show route
 // GET /recipes/new
 router.get('/new', ensureLoggedIn, recipesCtrl.new); // new has to be before show route
 // GET /recipes/:id -- READ --
@@ -30,9 +32,8 @@ router.post('/:id/addInstructions', ensureLoggedIn, recipesCtrl.addToInstruction
 router.put('/:id', ensureLoggedIn, recipesCtrl.update);
 
 
-
 /* -- DELETE -- */
-// router.delete('/:id', recipesCtrl.delete);
+router.delete('/:id', recipesCtrl.delete);
 
 
 module.exports = router;
