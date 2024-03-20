@@ -1,12 +1,24 @@
 <%- include('../partials/header') %>
 
-    <section class="hero">
+<nav class="breadcrumb is-small" aria-label="breadcrumbs">
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/recipes">All Recipes</a></li>
+        <li class="is-active"><a href="#" aria-current="page"><%= recipe.name %></a></li>
+    </ul>
+</nav>
+
+    <section class="hero is-small">
         <div class="hero-body">
-            <p class="title">Show</p>
-            <p class="subtitle">Placeholder /recipes/show</p>
+            <p class="title"><%= recipe.name %></p>
+            <p class="subtitle"><%= recipe.description %></p>
         </div>
     </section>
     <br>
+
+
+
+
 
     <section>
         <div>

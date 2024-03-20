@@ -25,7 +25,7 @@ function newRecipe(req, res) {
 }
 async function create(req, res) {
     try {
-        const { name, ingredients, instructions, cookingTime, category, imageUrl, } = req.body;
+        const { name, ingredients, instructions, cookingTime, category, imageUrl, description, } = req.body;
         // OAuth -- Add the user-centric info to req.body (the new recipe) user info add it to req.body
         req.body.user = req.user._id;
         req.body.userName = req.user.name;
@@ -46,6 +46,7 @@ async function create(req, res) {
             user: req.body.user,
             userName: req.body.userName,
             userAvatar: req.body.userAvatar,
+            description,
         });
         res.redirect('/recipes/');
     } catch (err) {
@@ -86,7 +87,7 @@ async function edit(req, res) {
 async function update(req, res) {
     try {
         const recipe = await Recipe.findById(req.params.id); // Find the recipe by id
-        const { name, ingredients, instructions, cookingTime, category, imageUrl } = req.body;
+        const { name, ingredients, instructions, cookingTime, category, imageUrl, description } = req.body;
         // handle ingredients and instructions like the create function 
         const ingredientsArray = ingredients.split(';').map(function (ingredient) {
             return ingredient.trim();
@@ -101,6 +102,7 @@ async function update(req, res) {
         recipe.cookingTime = cookingTime;
         recipe.category = category;
         recipe.imageUrl = imageUrl;
+        recipe.description = description;
         // Save NOT create
         await recipe.save();
         // Redirect to the updated recipe's page

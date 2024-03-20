@@ -8,19 +8,27 @@
     </section>
     <br>
 
-    <form action="/recipes/<%= recipe._id %>?_method=PUT" method="POST">
+    <form class="box" action="/recipes/<%= recipe._id %>?_method=PUT" method="POST">
         <fieldset>
             <legend>Update Recipe - Placeholder text, change this</legend>
             <br><br>
     
             <div class="field">
-                <label class="label">Name</label>
+                <label class="label">Recipe Title</label>
                 <div class="control">
                     <input class="input" type="text" name="name" placeholder="e.g. Crudités" value="<%= recipe.name %>">
                 </div>
                 <p class="help">This is a help text</p>
             </div>
     
+            <div class="field">
+                <label class="label">Description</label>
+                <div class="control">
+                    <textarea class="textarea" type="string" name="description" placeholder="e.g. It's just raw veggies and dip" maxlength="280" rows="2"><%= recipe.description %></textarea>
+                </div>
+                <p class="help">Keep it Short! Can contain up to 280 characters, I'm watching you!</p>
+            </div>
+
             <div class="field">
                 <label class="label">(Direct) Image URL</label>
                 <div class="control">
@@ -54,7 +62,7 @@
             <div class="field">
                 <label class="label">Ingredients</label>
                 <div class="control">
-                    <input class="input" type="string" name="ingredients" placeholder="e.g. Assorted vegetables; 1 cup plain yogurt..." value="<%= recipe.ingredients.join('; ') %>">
+                    <textarea class="textarea" type="string" name="ingredients" placeholder="e.g. Assorted vegetables; 1 cup plain yogurt..." rows="2"><%= recipe.ingredients.join('; ') %></textarea>
                 </div>
                 <p class="help">Please separate each ingredient with a <strong>semicolon</strong>, or I will cry</p>
             </div>
@@ -62,7 +70,7 @@
             <div class="field">
                 <label class="label">Cooking Instructions</label>
                 <div class="control">
-                    <input class="input" type="string" name="instructions" placeholder="e.g. Prepare vegetables; Combine the plain yogurt..." value="<%= recipe.instructions.join('; ') %>">
+                    <textarea class="textarea" type="string" name="instructions" placeholder="e.g. Prepare vegetables; Combine the plain yogurt..." rows="2"><%= recipe.instructions.join('; ') %></textarea>
                 </div>
                 <p class="help">Please separate each instruction with a <strong>semicolon</strong>, or I will cry</p>
             </div>

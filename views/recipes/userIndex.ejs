@@ -8,55 +8,81 @@
     </section>
     <br>
 
-    <section>
-        <table>
-            <thead>
-                <tr>
-                    <th>(placeholder) Image</th>
-                    <th>Name</th>
-                    <th>Category</th>
-                    <th>Cooking Time (Minutes)</th>
-                    <th>Date Added</th>
-                    <th>Last Updated</th>
-                    <th>(placeholder) Recipe Detail</th>
-                    <th>(placeholder) Edit Recipe</th>
-                    <th>(placeholder) Delete Recipe</th>
-                </tr>
-            </thead>
-            <% recipes.forEach(function(r) { %>
-                <% if (user._id.equals(r.user)) { %>
-            <tbody>
-                <tr>
-                    <td>
-                        <% if (r.imageUrl) { %>
-                            <img src="<%= r.imageUrl %>" alt="Recipe Image" style="width:90px; height:90px;">
-                            <% } else { %>
-                                <img src="/images/ojigi_kuma.png" alt="Placeholder Image" style="width:90px; height:90px;">
-                            <% } %>
-                    </td>
-                    <td><%= r.name %></td>
-                    <td><%= r.category %></td>
-                    <td><%= r.cookingTime %></td>
-                    <td><%= r.createdAt.toLocaleDateString() %></td>
-                    <td><%= r.updatedAt.toLocaleDateString() %></td>
-                    <td><a href="/recipes/<%= r._id %>">Recipe Detail</a></td>
-                    <td>
-                        <form action="/recipes/<%= r._id %>/edit" method="GET">
-                            <button type="submit">Edit Recipe</button>
-                        </form>
-                    </td>
-                    <td>
-                        <form action="/recipes/<%= r._id %>?_method=DELETE" method="POST">
-                            <button type="submit">Delete Recipe</button>
-                        </form>
-                    </td>
-                </tr>
+    <table class="table is-striped is-hoverable is-narrow">
+        <thead>
+            <tr>
+                <th>(placeH) Image</th>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Cooking Time (Minutes)</th>
+                <th>Date Added</th>
+                <th>Last Updated</th>
+                <th> (placeH) Recipe Detail</th>
+                <th>(placeH) Edit Recipe</th>
+                <th>(placeH) Delete Recipe</th>
+            </tr>
+        </thead>
+        <% recipes.forEach(function(r) { %>
+            <% if (user._id.equals(r.user)) { %>
+                <tbody>
+                    <tr>
+                        <td>
+                            <% if (r.imageUrl) { %>
+                                <img src="<%= r.imageUrl %>" alt="Recipe Image" style="width:90px; height:90px;">
+                                <% } else { %>
+                                    <img src="/images/ojigi_kuma.png" alt="Placeholder Image"
+                                        style="width:90px; height:90px;">
+                                    <% } %>
+                        </td>
+    
+                        <td><%= r.name %></td>
+                        <td><%= r.category %></td>
+                        <td><%= r.cookingTime %></td>
+                        <td>
+                            <%= r.createdAt.toLocaleDateString() %>
+                        </td>
+                        
+                        <td>
+                            <%= r.updatedAt.toLocaleDateString() %>
+                        </td>
+                        <td>
+                            <form action="/recipes/<%= r._id %>" method="GET">
+                                <button class="button is-primary is-light" type="submit">Recipe Detail</button>
+                            </form>
 
-            </tbody>
-            <% } %>
-            <% }) %>
-</table>
+                        <td>
+                            <form action="/recipes/<%= r._id %>/edit" method="GET">
+                                <button class="button is-warning is-light" type="submit">Edit Recipe</button>
+                            </form>
+                        </td>
+    
+                        <td>
+                            <form action="/recipes/<%= r._id %>?_method=DELETE" method="POST">
+                                <button class="button is-danger is-light" type="submit">Delete Recipe</button>
+                            </form>
+                        </td>
+                    </tr>
 
-    </section>
+                </tbody>
+                <% } %>
+                    <% }) %>
+    </table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     <%- include('../partials/footer') %>
+
+
+
