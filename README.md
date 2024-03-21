@@ -13,10 +13,12 @@ CRU·Di·tés was created with one focus in mind, just the recipe. Users are abl
 
 <div id="description" align="center">
 
+
  
 TODO: put Heroku link here
 <!-- ### [CLICK TO PLAY](https://paulcorpuz.github.io/spaceman-game/) -->
 
+<a href='https://github.com/paulcorpuz/' target="_blank"><img alt='GitHub' src='https://img.shields.io/badge/Paul_Corpuz-100000?style=flat&logo=GitHub&logoColor=white&labelColor=black&color=000000'/></a>
 <a href='https://www.linkedin.com/in/paulcorpuzseattle/' target="_blank"><img alt='LinkedIn' src='https://img.shields.io/badge/Paul_Corpuz-100000?style=flat&logo=LinkedIn&logoColor=white&labelColor=0077b5&color=0077b5'/></a>
 
 </div>
