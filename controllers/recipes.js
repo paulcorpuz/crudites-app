@@ -133,17 +133,9 @@ async function addToInstructions(req, res) {
 
 /* -- DELETE -- */
 async function deleteRecipe(req, res) {
-    const recipe = await Recipe.findOne({ 'recipes._id': req.params.id, 'recipes.user': req.user._id }); //OAuth
-    if (!recipe) return res.redirect('/recipes/userIndex');
-    // Remove the review using the remove method available on Mongoose arrays
-    recipe.reviews.remove(req.params.id);
-    // Save the updated recipe doc
-    await recipe.save();
-    // Redirect back to the recipe's show view
-    res.redirect(`/recipes/userIndex`);
+    await Recipe.findByIdAndDelete(req.params.id)
+    res.redirect(`/recipes/userIndex`); // Redirect back to the recipe's show view
 }
-
-
 
 
 

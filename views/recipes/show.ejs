@@ -1,10 +1,10 @@
 <%- include('../partials/header') %>
-
+<br>
 <nav class="breadcrumb is-small" aria-label="breadcrumbs">
     <ul>
         <li><a href="/">Home</a></li>
         <li><a href="/recipes">All Recipes</a></li>
-        <li class="is-active"><a href="#" aria-current="page"><%= recipe.name %></a></li>
+        <li class="is-active"><a href="#" aria-current="page">Recipe: <%= recipe.name %></a></li>
     </ul>
 </nav>
 
@@ -17,37 +17,58 @@
     <br>
 
 
+<!-- image -->
+    <div>
+        <% if (recipe.imageUrl) { %>
+            <img src="<%= recipe.imageUrl %>" alt="Recipe Image" style="width: 30%; height: auto">
+            <% } else { %>
+                <img src="https://i.imgur.com/on1iU8m.png" alt="Placeholder Image" style="width: 20%; height: auto">
+        <% } %>
+    </div>
 
 
 
-    <section>
-        <div>
-            <% if (recipe.imageUrl) { %>
-                <img src="<%= recipe.imageUrl %>" alt="Recipe Image" style="width: 30%; height: auto">
-                <% } else { %>
-                    <img src="https://i.imgur.com/on1iU8m.png" alt="Placeholder Image" style="width: 20%; height: auto">
-            <% } %>
-        </div>
+
+
+
+
+<div class="content is-normal">
         <div><h2><%= recipe.name %> Recipe</h2></div>
         <div><h2>Category: <%= recipe.category %></h2></div>
         <div><h2>Cooking Time: <%= recipe.cookingTime %> Minutes</h2></div>
 
-        <div><h2>Ingredients:</h2>
-            <ul list-style="none" list-style-position="inside">
+
+
+
+
+<!-- ingredients -->
+<div class="content">
+        <h4>Ingredients:</h4>
+            <ul>
                 <% recipe.ingredients.forEach(function(eachIngredient) { %>
                     <li><%= eachIngredient %></li>
                 <% }); %>
             </ul>
-        </div>
+</div>
 
-        <div><h2> Cooking Instructions:</h2>
+
+
+<div class="content">
+    <h3>Cooking Instructions:</h3>
             <ol>
                 <% recipe.instructions.forEach(function(eachInstruction) { %>
                     <li><%= eachInstruction %></li>
                 <% }); %>
             </ol>
-        </div>
-    </section>
+</div>
+
+
+
+
+
+
+
+
 
     
     <!-- FIXME: this needs to move later -->
@@ -55,11 +76,20 @@
     <section>
         <% if (user) { %>
         <form action="/recipes/<%= recipe.id%>/edit" method="GET">
-            <button type="submit">Edit Recipe</button>
+            <button class="button is-warning is-light" type="submit">Edit Recipe</button>
         </form>
         <% } %>
     </section>
     <br><br>
+
+
+
+
+
+
+
+
+
 
 <!-- FIXME: -->
     <section>
