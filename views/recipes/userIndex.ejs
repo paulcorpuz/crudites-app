@@ -60,16 +60,16 @@
     <!-- last 3 table cells are buttons  -->     
                                 <td>
                                     <form action="/recipes/<%= r._id %>" method="GET">
-                                        <button class="button is-primary is-light" type="submit">Recipe Detail</button>
+                                        <button class="button is-info is-light is is-rounded" type="submit">Recipe Detail</button>
                                     </form>
                                 <td>
                                     <form action="/recipes/<%= r._id %>/edit" method="GET">
-                                        <button class="button is-warning is-light" type="submit">Edit Recipe</button>
+                                        <button class="button is-warning is-light is-rounded" type="submit">Edit Recipe</button>
                                     </form>
                                 </td>
                                 <td>
                                     <form action="/recipes/<%= r._id %>?_method=DELETE" method="POST">
-                                        <button class="button is-danger is-light" type="submit">Delete Recipe</button>
+                                        <button class="button is-danger is-light is-rounded" type="submit">Delete Recipe</button>
                                     </form>
                                 </td>
                             </tr>

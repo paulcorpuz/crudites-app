@@ -7,7 +7,12 @@
 
 📝 Recipe App
 ============
-App description
+As crudités are essentially a veggie platter with a fancy French name, CRU·Di·tés is a MEN-stack app with a fancy name because CRUD Platter doesn’t exactly roll off the tongue.
+
+CRU·Di·tés was created with one focus in mind, just the recipe. Users are able to create, read, update, and delete recipes to your heart's content, but descriptions and comments have a max character count of 280 characters, or you will be chopped!
+
+
+CRU·Di·tés was created by Paul Corpuz with a focus on just cooking. Descriptions and comments have a max character count of 280 characters, so make sure to make it count! 
 
 <div id="description" align="center">
 

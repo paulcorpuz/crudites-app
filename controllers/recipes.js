@@ -5,6 +5,8 @@ const Recipe = require('../models/recipe');
 module.exports = {
     index,
     userIndex,
+    rootIndex,
+    aboutIndex,
     show,
     new: newRecipe,
     create,
@@ -72,9 +74,17 @@ async function userIndex(req, res) {
     const recipes = await Recipe.find({}).sort({"createdAt": -1})
     res.render('recipes/userIndex', { recipes });
 }
+async function aboutIndex(req, res) {
+    const recipes = await Recipe.find({}).sort({"updatedAt": -1})
+    res.render('recipes/about', { recipes });
+}
 
 
 
+async function rootIndex(req, res) {
+    const recipes = await Recipe.find({}).sort({"updatedAt": -1})
+    res.render('/index', { recipes });
+}
 
 
 /* -- UPDATE -- */

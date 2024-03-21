@@ -12,7 +12,7 @@ require('./config/database'); // connect to the database AFTER the config vars a
 require('./config/passport');
 
 
-/* ----- TODO: ROUTERS ----- */
+/* -----  ROUTERS ----- */
 var indexRouter = require('./routes/index');
 var recipesRouter = require('./routes/recipes');
 var reviewsRouter = require('./routes/reviews');
@@ -48,7 +48,7 @@ app.use(function (req, res, next) {
 });
 
 
-/* ----- TODO: ROUTERS ----- */ // the first arg is the "starts with" path. The paths within the route modules are appended to the starts with paths
+/* ----- ROUTERS ----- */ // the first arg is the "starts with" path. The paths within the route modules are appended to the starts with paths
 app.use('/', indexRouter);
 app.use('/recipes', recipesRouter);
 app.use('/', reviewsRouter);

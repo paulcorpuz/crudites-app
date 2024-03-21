@@ -22,8 +22,7 @@
 </section>
 
 
-
-<!-- FIXME: COLUMN 1 -->
+<!-- COLUMN 1 large left-->
 <div class="container">
     <div class="columns is-mobile is-centered">
         <div class="column is-half">
@@ -92,11 +91,11 @@
                     </div>
     <!-- button time! -->
                     <div class="buttons">
-                        <button class="button is-warning" type="submit">Update Recipe</button>
+                        <button class="button is-warning is-rounded" type="submit">Update Recipe</button>
                     </div>
             </form>
         </div>
-    <!-- FIXME: COLUMN 2 first nested -->
+    <!-- COLUMN 2 first nested, top -->
         <div class="column is-mobile">
             <div class="column is-narrow">
                 <div class="content">
@@ -115,19 +114,19 @@
                             <p class="help">Forgot an ingredient?</p>
                         </div>
                         <div class="buttons">
-                            <button class="button is-warning is-light" type="submit">Update Ingredients</button>
+                            <button class="button is-warning is-light is-rounded" type="submit">Update Ingredients</button>
                         </div>
                     </form>
                 </div>
             </div>
-    <!-- FIXME: COLUMN 3 second nested-->
+    <!-- COLUMN 3 second nested, bottom -->
             <div class="column is-mobile">
                 <div class="column is-narrow">
                     <div class="content">
                         <h4>Instructions</h4>
                         <ul>
                             <% recipe.instructions.forEach(function(eachInstructions) { %>
-                                <li><%= eachInstructions %></li>
+                                <li><%= eachInstructions %> </li>
                             <% }); %>
                         </ul>
                         <form class="box" action="/recipes/<%= recipe._id %>/addInstructions" method="POST">
@@ -139,7 +138,7 @@
                                 <p class="help">Forgot a step?</p>
                             </div>
                             <div class="buttons">
-                                <button class="button is-warning is-light" type="submit">Update Instructions</button>
+                                <button class="button is-warning is-light is-rounded" type="submit">Update Instructions</button>
                             </div>
                         </form>
                     </div>

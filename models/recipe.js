@@ -5,7 +5,6 @@ const Schema = mongoose.Schema;
 const reviewSchema = new Schema({
     content: {
         type: String,
-        required: true
     },
     user: {
         type: Schema.Types.ObjectId,

@@ -14,298 +14,140 @@
 </div>
 
 
-    <section class="hero is-small">
-        <div class="hero-body">
-            <p class="title"><%= recipe.name %></p>
-            <!-- <p class="subtitle">placeholder subtitle</p> -->
-        </div>
-    </section>
-    <br>
+<section class="hero is-small">
+    <div class="hero-body">
+        <p class="title"><%= recipe.name %></p>
+        <!-- <p class="subtitle">placeholder subtitle</p> -->
+    </div>
+</section>
 
-    <div class="tile is-ancestor">
-        <div class="tile is-vertical is-8">
-            <div class="tile">
-                <div class="tile is-parent">
-<!-- imageUrl is in box a-->
-                    <article class="tile is-child box">
-                        <figure>
-                            <% if (recipe.imageUrl) { %>
-                                <img class="has-ratio" src="<%= recipe.imageUrl %>" alt="Recipe Image" style="width: 80%; height: auto">
-                                <% } else { %>
-                                    <img src="https://i.imgur.com/on1iU8m.png" alt="Placeholder Image" style="width: 80%; height: auto">
-                            <% } %>
-                        </figure>
-                    </article>
-                </div>
+<div class="container">
+    <!-- main photo of recipe -->
+    <figure class="is-centered">
+        <% if (recipe.imageUrl) { %>
+            <img class="has-ratio" src="<%= recipe.imageUrl %>" alt="Recipe Image" style="width: 40%; height: auto">
+            <% } else { %>
+                <img src="https://i.imgur.com/on1iU8m.png" alt="Placeholder Image" style="width: 40%; height: auto">
+                <% } %>
+    </figure>
+    <div class="content">
+        <!-- name -->
+        <h1><%= recipe.name %></h1>
+        <p><%= recipe.description %></p>
+        <!-- category -->
+        <h3>Category</h3>
+        <p><%= recipe.category %></p>
+        <!-- cooking time -->
+        <h3>Cooking Time</h3>
+        <p><%= recipe.cookingTime %> Minutes</p>
+        <!-- ingredients -->
+        <h3>Ingredients</h3>
+        <ul>
+            <% recipe.ingredients.forEach(function(eachIngredient) { %>
+                <li>
+                    <%= eachIngredient %>
+                </li>
+            <% }); %>
+        </ul>
+        <!-- instructions -->
+        <h3>Cooking Instructions</h3>
+        <ol>
+            <% recipe.instructions.forEach(function(eachInstruction) { %>
+                <li>
+                    <%= eachInstruction %>
+                </li>
+            <% }); %>
+        </ol>
+    </div>
+</div>
+<br><br>
 
-                <div class="tile is-parent">
-                    <article class="tile is-child box is narrow">
-                        <p>Box B</p>
-                    </article>
-                </div>
-            </div>
-            <div class="tile is-parent">
-                <article class="tile is-child box">
-                    <p>Box C</p>
-                </article>
-            </div>
-            <div class="tile is-parent is-vertical">
 
-<!-- TODO: add comment -->
-                <div class="tile is-child box">
-                    <article class="media">
-                        <figure class="media-left">
-                            <p class="image is-64x64">
-                                <img src="https://bulma.io/images/placeholders/128x128.png">
+<div class="container">
+    <div class="tile is-child box">
+        <article class="media">
+            <!-- User Avatar -->
+            <% if (user) { %>
+                <figure class="media-left">
+                    <p class="image is-64x64">
+                        <img class="is-rounded" src="<%= recipe.userAvatar %>" alt="avatar"
+                            referrerpolicy="no-referrer">
+                    </p>
+                </figure>
+                <div class="media-content">
+                    <form action="/recipes/<%= recipe._id %>/reviews" method="POST">
+                        <div class="field">
+                            <p class="control">
+                                <textarea class="textarea" name="content" placeholder="Add a comment..." maxlength="280" rows="2"></textarea>
                             </p>
-                        </figure>
-                        <div class="media-content">
-                            <div class="content">
-                                <p>
-                                    <strong>John Smith</strong> <small>@johnsmith</small> <small>31m</small>
-                                    <br>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor
-                                    vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.
-                                </p>
-                            </div>
-                            <nav class="level is-mobile">
-                                <div class="level-left">
-                                    <a class="level-item">
-                                        <span class="icon is-small"><i class="fas fa-reply"></i></span>
-                                    </a>
-                                    <a class="level-item">
-                                        <span class="icon is-small"><i class="fas fa-retweet"></i></span>
-                                    </a>
-                                    <a class="level-item">
-                                        <span class="icon is-small"><i class="fas fa-heart"></i></span>
-                                    </a>
+                        </div>
+                        <nav class="level">
+                            <div class="level-left">
+                                <div class="level-item">
+                                    <button class="button is-primary is-rounded" type="submit">Add Comment</button>
                                 </div>
-                            </nav>
-                        </div>
-                        <div class="media-right">
-                            <button class="delete"></button>
-                        </div>
-                    </article>
-                </div>
-
-<!-- TODO: add comment -->
-                <div class="tile is-child box">
-                    <article class="media">
-                        <figure class="media-left">
-                            <p class="image is-64x64">
-                                <img src="https://bulma.io/images/placeholders/128x128.png">
-                            </p>
-                        </figure>
-                        <div class="media-content">
-                            <div class="field">
-                                <p class="control">
-                                    <textarea class="textarea" placeholder="Add a comment..."></textarea>
-                                </p>
                             </div>
+                            <div class="level-right">
+                                <div class="level-item">
+                                </div>
+                            </div>
+                        </nav>
+                    </form>
+                </div>
+                <% } %>
+        </article>
+    </div>
+    <% if (recipe.reviews.length) { %>
+        <div class="tile is-child box">
+            <% recipe.reviews.forEach(function(r) { %>
+                <article class="media">
+                    <!-- User Avatar -->
+                    <figure class="media-left">
+                        <p class="image is-64x64">
+                            <img class="is-rounded" src="<%= recipe.userAvatar %>" alt="avatar"
+                                referrerpolicy="no-referrer">
+                        </p>
+                    </figure>
+                    <div class="media-content">
+                        <div class="content">
+                            <p>
+                                <strong><%= r.userName %></strong> <small><%= r.createdAt.toLocaleDateString() %></small>
+                                <br>
+                                <%= r.content %>
+                            </p>
+                        </div>
+                        <% if (user?._id.equals(r.user)) { %>
                             <nav class="level">
                                 <div class="level-left">
                                     <div class="level-item">
-                                        <a class="button is-info">Submit</a>
-                                    </div>
-                                </div>
-                                <div class="level-right">
-                                    <div class="level-item">
-                                        <label class="checkbox">
-                                            <input type="checkbox"> Press enter to submit
-                                        </label>
+                                        <form action="/reviews/<%= r._id %>?_method=DELETE" method="POST">
+                                            <button class="button is-danger is-rounded" type="submit">Delete</button>
+                                        </form>
                                     </div>
                                 </div>
                             </nav>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- TODO: start over -->
-    <figure>
-        <% if (recipe.imageUrl) { %>
-            <img class="has-ratio" src="<%= recipe.imageUrl %>" alt="Recipe Image" style="width: 30%; height: auto">
-            <% } else { %>
-                <img src="https://i.imgur.com/on1iU8m.png" alt="Placeholder Image" style="width: 30%; height: auto">
-        <% } %>
-    </figure>
-
-<div class="content">
-<!-- name -->
-    <h1><%= recipe.name %></h1>
-<!-- FIXME: this needs to move later -->
-    <section>
-        <% if (user) { %>
-        <form action="/recipes/<%= recipe.id%>/edit" method="GET">
-            <button class="button is-warning is-light" type="submit">Edit Recipe</button>
-        </form>
-        <% } %>
-    </section>
-    <p><%= recipe.description %></p>
-
-<!-- category -->
-    <h3>Category</h3>
-    <p><%= recipe.category %></p>
-
-<!-- cooking time -->
-    <h3>Cooking Time</h3>
-    <p><%= recipe.cookingTime %> Minutes</p>
-
-<!-- ingredients -->
-    <h3>Ingredients</h3>
-        <ul>
-            <% recipe.ingredients.forEach(function(eachIngredient) { %>
-                <li><%= eachIngredient %></li>
-            <% }); %>
-        </ul>
-</div>
-
-<!-- instructions -->
-<div class="content">
-    <h3>Cooking Instructions</h3>
-        <ol>
-            <% recipe.instructions.forEach(function(eachInstruction) { %>
-                <li><%= eachInstruction %></li>
-            <% }); %>
-        </ol>
-</div>
-
-
-
-
-<!-- FIXME: -->
-    <section>
-        <% if (user) { %>
-        <form action="/recipes/<%= recipe._id %>/reviews" method="POST">
-            <label>Review:</label>
-                <textarea name="content"></textarea><br>
-            <label>Rating:</label>
-                <input type="submit" value="Add Review">
-        </form>
-        <% } %>
-    </section>
-    <br>
-
-
-
-
-
-
-
-
-    <div class="tile is-child box">
-        <article class="media">
-<!-- User Avatar -->
-            <figure class="media-left">
-
-                    <p class="image is-64x64">
-                        <img class="is-rounded" src="<%= recipe.userAvatar %>" alt="avatar" referrerpolicy="no-referrer">
-                    </p>
-
-            </figure>
-
-            
-
-
-
-
-            <div class="media-content">
-                <div class="field">
-                    <p class="control">
-                        <textarea class="textarea" placeholder="Add a comment..."></textarea>
-                    </p>
-                </div>
-                <nav class="level">
-                    <div class="level-left">
-                        <div class="level-item">
-                            <a class="button is-info">Submit</a>
-                        </div>
-                    </div>
-                    <div class="level-right">
-                        <div class="level-item">
-                        </div>
-                    </div>
-                </nav>
-            </div>
-        </article>
-    </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <!-- FIXME: this needs to be centered -->
-    <!-- thead is tableHeader, tr is tableRow -->
-    <section>
-        <% if (recipe.reviews.length) { %>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Date</th>
-                        <th>Comments</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <% recipe.reviews.forEach(function(r) { %>
-                        <tr>
-                            <td><%= r.createdAt.toLocaleDateString() %></td>
-                            <td><%= r.content %></td>
-                            <td>
-                            <% if (user?._id.equals(r.user)) { %>
-                                <form action="/reviews/<%= r._id %>?_method=DELETE" method="POST">
-                                    <button type="submit">Delete X</button>
-                                </form>
                             <% } %>
-                            </td>
-                        </tr>
-                    <% }); %>
-                </tbody>
-            </table>
-            <% } else { %>
-                <h5>No Reviews Yet &#128547</h5>
+                    </div>
+                </article>
+                <% }); %>
+        </div>
+        <% } else { %>
+            <h1>No Reviews Yet &#128547</h1>
             <% } %>
-    </section>
+</div>
 
 
 <br><br>
 
+
+
+        <!-- FIXME: this needs to move later -->
+        <!-- <section>
+            <% if (user) { %>
+                <form action="/recipes/<%= recipe.id%>/edit" method="GET">
+                    <button class="button is-warning is-light" type="submit">Edit Recipe</button>
+                </form>
+                <% } %>
+        </section> -->
 
 <%- include('../partials/footer') %>

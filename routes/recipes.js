@@ -11,7 +11,14 @@ var ensureLoggedIn = require('../config/ensureLoggedIn');
 // GET /recipes index  -- READ -- all recipes
 router.get('/', recipesCtrl.index)
 // GET /recipes/userIndex
-router.get('/userIndex', ensureLoggedIn, recipesCtrl.userIndex); // new has to be before show route
+router.get('/userIndex', ensureLoggedIn, recipesCtrl.userIndex); 
+// TODO:
+// GET /recipes/aboutIndex
+router.get('/about', recipesCtrl.aboutIndex);
+// GET /recipes/userIndex
+router.get('/rootIndex', ensureLoggedIn, recipesCtrl.rootIndex);
+
+
 // GET /recipes/new
 router.get('/new', ensureLoggedIn, recipesCtrl.new); // new has to be before show route
 // GET /recipes/:id -- READ --

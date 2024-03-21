@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var recipesCtrl = require('../controllers/recipes');
 const passport = require('passport');
 
 
@@ -7,6 +8,9 @@ const passport = require('passport');
 router.get('/', function (req, res, next) {
   res.render('index', { title: 'Express' });
 });
+
+// Route to render the page showing all recipes
+router.get('/', recipesCtrl.index);
 
 // Google OAuth login route
 router.get('/auth/google', passport.authenticate(
