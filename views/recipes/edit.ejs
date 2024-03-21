@@ -1,139 +1,156 @@
 <%- include('../partials/header') %>
+
+
+<!-- breadcrumb -->
 <br>
-<nav class="breadcrumb is-small" aria-label="breadcrumbs">
-    <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/recipes">All Recipes</a></li>
-        <li class="is-active"><a href="#" aria-current="page">Edit Recipe: <%= recipe.name %></a></li>
-    </ul>
-</nav>
+<div class="container">
+    <nav class="breadcrumb is-small" aria-label="breadcrumbs">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/recipes/userIndex">My Recipes</a></li>
+            <li class="is-active"><a href="#" aria-current="page">Edit Recipe: <%= recipe.name %></a></li>
+        </ul>
+    </nav>
+</div>
 
-    <section class="hero">
-        <div class="hero-body">
-            <p class="title">Edit</p>
-            <p class="subtitle">Placeholder /recipes/:id/edit</p>
+<!-- hero title -->
+<section class="hero">
+    <div class="hero-body">
+        <p class="title">Edit a Recipe</p>
+        <p class="subtitle">Everybody makes mistakes. Everybody has those days.  </p>
+    </div>
+</section>
+
+
+
+<!-- FIXME: COLUMN 1 -->
+<div class="container">
+    <div class="columns is-mobile is-centered">
+        <div class="column is-half">
+            <form class="box" action="/recipes/<%= recipe._id %>?_method=PUT" method="POST">
+    <!-- name -->
+                    <div class="field">
+                        <label class="label">Recipe Title</label>
+                        <div class="control">
+                            <input class="input" type="text" name="name" placeholder="e.g. Crudités" value="<%= recipe.name %>">
+                        </div>
+                        <p class="help">Give your recipe a name</p>
+                    </div>
+    <!-- description -->
+                    <div class="field">
+                        <label class="label">Description (Optional)</label>
+                        <div class="control">
+                            <textarea class="textarea" type="string" name="description" placeholder="e.g. It's just raw vegetables and dip" maxlength="280" rows="2"><%= recipe.description %></textarea>
+                        </div>
+                        <p class="help">Provide a short description. Can contain up to 280 characters, I'm watching you!</p>
+                    </div>
+    <!-- imageURL -->
+                    <div class="field">
+                        <label class="label">Photo (Image URL)</label>
+                        <div class="control">
+                            <input class="input" type="string" name="imageUrl" placeholder="e.g. https://i.imgur.com/...png" value="<%= recipe.imageUrl %>">
+                        </div>
+                        <p class="help">Please submit a direct image URL of your recipe. (I don't have money to host it here &#128517)</p>
+                    </div>
+    <!-- category -->
+                    <div class="control">
+                        <label class="label">Category</label>
+                        <div class="select">
+                            <select name="category">
+                                <option value="Appetizer" <%=recipe.category==='Appetizer' ? 'selected' : '' %>>Appetizer</option>
+                                <option value="Dessert" <%=recipe.category==='Dessert' ? 'selected' : '' %>>Dessert</option>
+                                <option value="Drinks" <%=recipe.category==='Drinks' ? 'selected' : '' %>>Drinks</option>
+                                <option value="Entree" <%=recipe.category==='Entree' ? 'selected' : '' %>>Entrée</option>
+                                <option value="Other" <%=recipe.category==='Other' ? 'selected' : '' %>>Other</option>
+                                <option value="Side Dish" <%=recipe.category==='Side Dish' ? 'selected' : '' %>>Side Dish</option>
+                            </select>
+                        </div>
+                    </div>
+    <!-- cookingTime -->
+                    <div class="field">
+                        <label class="label">Cooking Time (in Minutes)</label>
+                        <div class="control">
+                            <input class="input" type="number" name="cookingTime" min="0" max="9999" placeholder="e.g. 10" value="<%= recipe.cookingTime %>">
+                        </div>
+                        <p class="help">'Cooking Time (in Hours)' is a WIP like me</p>
+                    </div>
+    <!-- ingredients -->
+                    <div class="field">
+                        <label class="label">Ingredients</label>
+                        <div class="control">
+                            <textarea class="textarea" type="string" name="ingredients" placeholder="e.g. Assorted vegetables; 1 cup plain yogurt..." rows="2"><%= recipe.ingredients.join('; ') %></textarea>
+                        </div>
+                        <p class="help">Please separate each ingredient with a <strong>semicolon</strong>, or I will cry</p>
+                    </div>
+    <!-- instructions -->
+                    <div class="field">
+                        <label class="label">Cooking Instructions</label>
+                        <div class="control">
+                            <textarea class="textarea" type="string" name="instructions" placeholder="e.g. Prepare vegetables; Combine the plain yogurt..." rows="2"><%= recipe.instructions.join('; ') %></textarea>
+                        </div>
+                        <p class="help">Please separate each instruction with a <strong>semicolon</strong>, or I will cry</p>
+                    </div>
+    <!-- button time! -->
+                    <div class="buttons">
+                        <button class="button is-warning" type="submit">Update Recipe</button>
+                    </div>
+            </form>
         </div>
-    </section>
-    <br>
-
-    <form class="box" action="/recipes/<%= recipe._id %>?_method=PUT" method="POST">
-        <fieldset>
-            <legend>Update Recipe - Placeholder text, change this</legend>
-            <br><br>
-    
-            <div class="field">
-                <label class="label">Recipe Title</label>
-                <div class="control">
-                    <input class="input" type="text" name="name" placeholder="e.g. Crudités" value="<%= recipe.name %>">
-                </div>
-                <p class="help">This is a help text</p>
-            </div>
-    
-            <div class="field">
-                <label class="label">Description</label>
-                <div class="control">
-                    <textarea class="textarea" type="string" name="description" placeholder="e.g. It's just raw veggies and dip" maxlength="280" rows="2"><%= recipe.description %></textarea>
-                </div>
-                <p class="help">Keep it Short! Can contain up to 280 characters, I'm watching you!</p>
-            </div>
-
-            <div class="field">
-                <label class="label">(Direct) Image URL</label>
-                <div class="control">
-                    <input class="input" type="string" name="imageUrl" placeholder="e.g. https://i.imgur.com/N46VgZu.png" value="<%= recipe.imageUrl %>">
-                </div>
-                <p class="help">This is a help text</p>
-            </div>
-    
-            <div class="control">
-                <label class="label">Category</label>
-                <div class="select">
-                    <select name="category">
-                        <option value="Appetizer" <%=recipe.category==='Appetizer' ? 'selected' : '' %>>Appetizer</option>
-                        <option value="Dessert" <%=recipe.category==='Dessert' ? 'selected' : '' %>>Dessert</option>
-                        <option value="Drinks" <%=recipe.category==='Drinks' ? 'selected' : '' %>>Drinks</option>
-                        <option value="Entree" <%=recipe.category==='Entree' ? 'selected' : '' %>>Entrée</option>
-                        <option value="Other" <%=recipe.category==='Other' ? 'selected' : '' %>>Other</option>
-                        <option value="Side Dish" <%=recipe.category==='Side Dish' ? 'selected' : '' %>>Side Dish</option>
-                    </select>
+    <!-- FIXME: COLUMN 2 first nested -->
+        <div class="column is-mobile">
+            <div class="column is-narrow">
+                <div class="content">
+                    <h4>Ingredients</h4>
+                    <ul>
+                        <% recipe.ingredients.forEach(function(eachIngredient) { %>
+                            <li><%= eachIngredient %></li>
+                        <% }); %>
+                    </ul>
+                    <form class="box" action="/recipes/<%= recipe._id %>/addIngredients" method="POST">
+                        <div class="field">
+                            <label class="label">Add Ingredient</label>
+                            <div class="control">
+                                <input class="input" type="text" name="ingredients" placeholder="e.g. 1/2 cup brown sugar">
+                            </div>
+                            <p class="help">Forgot an ingredient?</p>
+                        </div>
+                        <div class="buttons">
+                            <button class="button is-warning is-light" type="submit">Update Ingredients</button>
+                        </div>
+                    </form>
                 </div>
             </div>
-    
-            <div class="field">
-                <label class="label">Cooking Time (in Minutes)</label>
-                <div class="control">
-                    <input class="input" type="number" name="cookingTime" min="0" max="9999" placeholder="e.g. 10" value="<%= recipe.cookingTime %>">
+    <!-- FIXME: COLUMN 3 second nested-->
+            <div class="column is-mobile">
+                <div class="column is-narrow">
+                    <div class="content">
+                        <h4>Instructions</h4>
+                        <ul>
+                            <% recipe.instructions.forEach(function(eachInstructions) { %>
+                                <li><%= eachInstructions %></li>
+                            <% }); %>
+                        </ul>
+                        <form class="box" action="/recipes/<%= recipe._id %>/addInstructions" method="POST">
+                            <div class="field">
+                                <label class="label">Add Instruction</label>
+                                <div class="control">
+                                    <input class="input" type="text" name="instructions" placeholder="Preheat oven to 350ºF">
+                                </div>
+                                <p class="help">Forgot a step?</p>
+                            </div>
+                            <div class="buttons">
+                                <button class="button is-warning is-light" type="submit">Update Instructions</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-                <p class="help">'Cooking Time (in Hours)' is a WIP like me</p>
             </div>
-    
-            <div class="field">
-                <label class="label">Ingredients</label>
-                <div class="control">
-                    <textarea class="textarea" type="string" name="ingredients" placeholder="e.g. Assorted vegetables; 1 cup plain yogurt..." rows="2"><%= recipe.ingredients.join('; ') %></textarea>
-                </div>
-                <p class="help">Please separate each ingredient with a <strong>semicolon</strong>, or I will cry</p>
-            </div>
-    
-            <div class="field">
-                <label class="label">Cooking Instructions</label>
-                <div class="control">
-                    <textarea class="textarea" type="string" name="instructions" placeholder="e.g. Prepare vegetables; Combine the plain yogurt..." rows="2"><%= recipe.instructions.join('; ') %></textarea>
-                </div>
-                <p class="help">Please separate each instruction with a <strong>semicolon</strong>, or I will cry</p>
-            </div>
-    
-            <div class="buttons">
-                <button class="button is-primary" type="submit">Update Recipe</button>
-            </div>
-        </fieldset>
-    </form>
-
-
-
-
-<!-- TODO: this needs to be styled/better -->
-    <br><br>
-    <section>
-        <div>
-            03.18 11.33AM Add -- Ingredients List:
-            <ul>
-                <% recipe.ingredients.forEach(function(eachIngredient) { %>
-                    <li>
-                        <%= eachIngredient %>
-                    </li>
-                    <% }); %>
-            </ul>
         </div>
-    </section>
-
-    <br><br>
-    <form action="/recipes/<%= recipe._id %>/addIngredients" method="POST">
-        <label> 03.18 11.33AM Add -- Ingredients:</label>
-        <input type="text" name="ingredients">
-        <input type="submit" value="PUSH Ingredients">
-    </form>
-
-    <br><br>
-    <section>
-        <div>
-            3PM Add -- Instructions List:
-            <ul>
-                <% recipe.instructions.forEach(function(eachInstruction) { %>
-                    <li>
-                        <%= eachInstruction %>
-                    </li>
-                    <% }); %>
-            </ul>
-        </div>
-    </section>
-
-    <br><br>
-    <form action="/recipes/<%= recipe._id %>/addInstructions" method="POST">
-        <label>3PM Add -- Instructions:</label>
-        <input type="text" name="instructions">
-        <input type="submit" value="PUSH Instructions">
-    </form>
+    </div>
+</div>
 
 
-    <%- include('../partials/footer') %>
+<br><br>
+
+
+<%- include('../partials/footer') %>
