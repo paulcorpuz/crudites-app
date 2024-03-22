@@ -58,8 +58,8 @@ CRU·Di·tés was created with one focus in mind, just the recipe. Users are abl
 <img src="public/images/midDev1.png" alt="Mid Development" width="320" height="auto">
 
 ### Deployed
-<!-- FIXME: add in deployed -->
-
+<img src="public/images/deployed1.png" alt="Mid Development" width="320" height="auto">
+<img src="public/images/deployed2.png" alt="Mid Development" width="320" height="auto">
 
 
 
