@@ -80,3 +80,10 @@ No installation required, however, internet access is necessary.
 - [ ] Update Models to include more attributes. e.g., 'Allergens', 'Cooking Equipment', etc.
 - [ ] Ability to search database for recipes.
 - [ ] Ability to share recipes on social media.
+
+
+
+❤️ Acknowledgments
+============
+- Special thank you to [allrecipes.com ](https://www.allrecipes.com/) for the recipes.
+- This app was made possible by contributions to your open-source community for the resources from viewers like you. Thank you!
