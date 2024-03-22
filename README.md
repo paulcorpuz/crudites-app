@@ -1,6 +1,6 @@
 <div id="header" align="center" alt="banner image">
 
- <!-- TODO: header image here -->
+<img src="public/images/cruditesBanner.png" alt="Wireframe" width="320" height="auto">
 
 </div>
 
@@ -9,17 +9,15 @@
 ============
 As crudités are essentially a veggie platter with a fancy French name, CRU·Di·tés is a MEN-stack app with a fancy name because CRUD Platter doesn’t exactly roll off the tongue.
 
-CRU·Di·tés was created with one focus in mind, just the recipe. Users are able to **create, read, update, and delete**  recipes to your heart's content, but descriptions and comments have a max character-count of 280 characters, so keep it short, or you'll be chopped!
+CRU·Di·tés was created with one focus in mind, just the recipe. Users are able to **create, read, update, and delete**  recipes to your heart's content, but descriptions and comments are restricted to 280 characters, so keep it short! Just recipes, without the crud.
 
 <div id="description" align="center">
 
+### [CRU·Di·tés](https://crudites-8dba2b292faf.herokuapp.com/)
 
- 
-TODO: put Heroku link here
-<!-- ### [CLICK TO PLAY](https://paulcorpuz.github.io/spaceman-game/) -->
-
-<a href='https://github.com/paulcorpuz/' target="_blank"><img alt='GitHub' src='https://img.shields.io/badge/Paul_Corpuz-100000?style=flat&logo=GitHub&logoColor=white&labelColor=black&color=000000'/></a>
 <a href='https://www.linkedin.com/in/paulcorpuzseattle/' target="_blank"><img alt='LinkedIn' src='https://img.shields.io/badge/Paul_Corpuz-100000?style=flat&logo=LinkedIn&logoColor=white&labelColor=0077b5&color=0077b5'/></a>
+<a href='https://github.com/paulcorpuz/' target="_blank"><img alt='GitHub' src='https://img.shields.io/badge/Paul_Corpuz-100000?style=flat&logo=GitHub&logoColor=white&labelColor=black&color=000000'/></a>
+
 
 </div>
 
@@ -27,7 +25,6 @@ TODO: put Heroku link here
 👨‍🍳 App Overview
 ============
 'CRU·Di·tés' is developed using MongoDB, Express, and Node featuring OAuth 2.0 Authentication.
-
 
 
 💻 Technologies Used
@@ -44,9 +41,8 @@ TODO: put Heroku link here
 ![Git](https://img.shields.io/badge/-Git-05122A?style=flat&logo=git)
 ![Github](https://img.shields.io/badge/-GitHub-05122A?style=flat&logo=github)
 ![VSCode](https://img.shields.io/badge/-VS_Code-05122A?style=flat&logo=visualstudio)
-<a target="_blank"><img alt='Bulma' src="https://bulma.io/images/made-with-bulma.png" width="96" height="18"></a>
+![Bulma](https://img.shields.io/badge/bulma-00D0B1?style=for-the-badge&logo=bulma&logoColor=white)
 <a target="_blank"><img alt='Clip Studio Paint' src='https://img.shields.io/badge/Clip_Studio Paint-100000?style=flat&logo=Clip Studio Paint&logoColor=white&labelColor=333333&color=333333'></a>
-
 
 
 📸 Screenshots
