@@ -35,7 +35,7 @@ async function create(req, res) {
         req.body.user = req.user._id;
         req.body.userName = req.user.name;
         req.body.userAvatar = req.user.avatar;
-        //for a user to input more than one ingredient at a time, take string, delimits, split() ; maps over array, trim()
+        // TODO: for a user to input more than one ingredient at a time, take string, delimits, split() ; maps over array, trim()
         const ingredientsArray = ingredients.split(';').map(function (ingredient) {
             return ingredient.trim();
         });

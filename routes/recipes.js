@@ -28,6 +28,7 @@ router.get('/:id/edit', ensureLoggedIn, recipesCtrl.edit);
 
 // POST /recipe -- CREATE -- add new recipe
 router.post('/', ensureLoggedIn, recipesCtrl.create)
+// TODO: don't cross the streams
 // POST /recipe -- CREATE? -- add ingredients
 router.post('/:id/addIngredients', ensureLoggedIn, recipesCtrl.addToIngredients);
 // POST /recipe -- CREATE? -- add instructions
