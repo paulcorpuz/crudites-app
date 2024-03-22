@@ -12,6 +12,7 @@
     </nav>
 </div>
 
+
 <!-- hero title -->
 <section class="hero">
     <div class="hero-body">
@@ -20,7 +21,6 @@
     </div>
 </section>
 <br>
-
 
 
 <!-- body/content -->
@@ -38,7 +38,6 @@
                         <th class="is-selected has-text-centered">Last Updated</th>
                     </tr>
                 </thead>
-
                 <% recipes.forEach(function(r) { %>
                     <% if (user._id.equals(r.user)) { %>
     <!-- table body -->
@@ -82,9 +81,7 @@
 </div>
 
 
-<!-- TODO: Add a message if a user did not submit anything? -->
-
-
 <br><br>
+
 
 <%- include('../partials/footer') %>

@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+// import mongoose library ^
 
 
 const reviewSchema = new Schema({
@@ -55,11 +56,6 @@ const recipeSchema = new Schema({
 });
 
 
-// -- need OAuth, add in user, recipes by user .find, recipe.user.id = ~
-// TODO: Aad user to recipe into 
-
-
-// Compile the schema into a model and export it
 module.exports = mongoose.model('Recipe', recipeSchema);
 
 
@@ -70,20 +66,3 @@ module.exports = mongoose.model('Recipe', recipeSchema);
 
 
 
-
-/* TODO:
-in mongo, this is what is looks like:
-
-_id
-name
-ingredients
-instructions
-cookingTime
-category
-imageUrl
-reviews:
-users: --- added 03/18 ---
-createdAt ---use this ---
-updatedAt ---use this --- 
-
-*/

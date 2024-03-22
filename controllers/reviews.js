@@ -1,4 +1,6 @@
 const Recipe = require('../models/recipe');
+// Recipe requires the recipe model (folder)
+
 
 module.exports = {
     create,
@@ -8,7 +10,6 @@ module.exports = {
 /* -- CREATE -- */
 async function create(req, res) {
     const recipe = await Recipe.findById(req.params.id);
-    
     // OAuth -- Add the user-centric info to req.body (the new review)
     req.body.user = req.user._id;
     req.body.userName = req.user.name;
@@ -24,6 +25,7 @@ async function create(req, res) {
 }
 
 /* -- DELETE -- */
+// removes the specified review from the recipe's reviews array, moongoose method
 async function deleteReview(req, res) {
     const recipe = await Recipe.findOne({ 'reviews._id': req.params.id, 'reviews.user': req.user._id }); //OAuth
     if (!recipe) return res.redirect('/recipes');
@@ -34,3 +36,4 @@ async function deleteReview(req, res) {
     // Redirect back to the recipe's show view
     res.redirect(`/recipes/${recipe._id}`);
 }
+

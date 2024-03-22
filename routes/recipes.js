@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var recipesCtrl = require('../controllers/recipes');
 var ensureLoggedIn = require('../config/ensureLoggedIn');
-
+// set up the necessary dependencies for defining routes + reqs
 
 // actual path based off server.js is /recipes
 // all paths start with /recipes (below are appended with the routers in server.js)
@@ -12,11 +12,10 @@ var ensureLoggedIn = require('../config/ensureLoggedIn');
 router.get('/', recipesCtrl.index)
 // GET /recipes/userIndex
 router.get('/userIndex', ensureLoggedIn, recipesCtrl.userIndex); 
-// TODO:
 // GET /recipes/aboutIndex
 router.get('/about', recipesCtrl.aboutIndex);
 // GET /recipes/userIndex
-router.get('/rootIndex', ensureLoggedIn, recipesCtrl.rootIndex);
+// router.get('/rootIndex', ensureLoggedIn, recipesCtrl.rootIndex); removed, 
 
 
 // GET /recipes/new

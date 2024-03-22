@@ -31,16 +31,16 @@
                 <% } %>
     </figure>
     <div class="content">
-        <!-- name -->
+    <!-- name -->
         <h1><%= recipe.name %></h1>
         <p><%= recipe.description %></p>
-        <!-- category -->
+    <!-- category -->
         <h3>Category</h3>
         <p><%= recipe.category %></p>
-        <!-- cooking time -->
+    <!-- cooking time -->
         <h3>Cooking Time</h3>
         <p><%= recipe.cookingTime %> Minutes</p>
-        <!-- ingredients -->
+    <!-- ingredients -->
         <h3>Ingredients</h3>
         <ul>
             <% recipe.ingredients.forEach(function(eachIngredient) { %>
@@ -49,7 +49,7 @@
                 </li>
             <% }); %>
         </ul>
-        <!-- instructions -->
+    <!-- instructions -->
         <h3>Cooking Instructions</h3>
         <ol>
             <% recipe.instructions.forEach(function(eachInstruction) { %>
@@ -137,18 +137,7 @@
 </div>
 
 
-
 <br><br>
 
-
-
-        <!-- FIXME: this needs to move later -->
-        <!-- <section>
-            <% if (user) { %>
-                <form action="/recipes/<%= recipe.id%>/edit" method="GET">
-                    <button class="button is-warning is-light" type="submit">Edit Recipe</button>
-                </form>
-                <% } %>
-        </section> -->
 
 <%- include('../partials/footer') %>

@@ -1,12 +1,14 @@
 const Recipe = require('../models/recipe');
 // const ensureLoggedIn = require('../config/ensureLoggedIn');
+// Recipe requires the recipe model (folder) ^^
 
 
+// exports an object with fncs that can be imported and used
 module.exports = {
     index,
     userIndex,
-    rootIndex,
     aboutIndex,
+    // rootIndex, removed, out of time
     show,
     new: newRecipe,
     create,
@@ -17,14 +19,15 @@ module.exports = {
     delete: deleteRecipe,
 };
 
-
 /* -- CREATE -- */
+// initializes new recipe
 function newRecipe(req, res) {
     const newRecipe = new Recipe();
     res.render('recipes/new', {
         errorMsg: ''
     });
 }
+//  create new recipe, extracts data from the request body 
 async function create(req, res) {
     try {
         const { name, ingredients, instructions, cookingTime, category, imageUrl, description, } = req.body;
@@ -32,12 +35,14 @@ async function create(req, res) {
         req.body.user = req.user._id;
         req.body.userName = req.user.name;
         req.body.userAvatar = req.user.avatar;
+        //for a user to input more than one ingredient at a time, take string, delimits, split() ; maps over array, trim()
         const ingredientsArray = ingredients.split(';').map(function (ingredient) {
             return ingredient.trim();
         });
         const instructionsArray = instructions.split(';').map(function (instruction) {
             return instruction.trim();
         });
+        // creates new entries in the recipe based off the below:
         await Recipe.create({
             name,
             ingredients: ingredientsArray,
@@ -58,10 +63,12 @@ async function create(req, res) {
 }
 
 /* -- READ -- */
+// fetches all recipes from mongo, sorts by updatedAt, then renders
 async function index(req, res) {
     const recipes = await Recipe.find({}).sort({"updatedAt": -1})
     res.render('recipes/index', { recipes });
 }
+// show renders specific recipe from mongo based on the req.params.id, aka the ID from the URL route (unique identifier) 
 async function show(req, res) {
     const recipe = await Recipe.findById(req.params.id);
     res.render('recipes/show', {
@@ -80,17 +87,18 @@ async function aboutIndex(req, res) {
 }
 
 
-
-async function rootIndex(req, res) {
-    const recipes = await Recipe.find({}).sort({"updatedAt": -1})
-    res.render('/index', { recipes });
-}
+// removed, out out time
+// async function rootIndex(req, res) {
+//     const recipes = await Recipe.find({}).sort({"updatedAt": -1})
+//     res.render('/index', { recipes });
+// }
 
 
 /* -- UPDATE -- */
+// fnc finds specific recipe from mongo based of :id and enders it on recipe/edit
 async function edit(req, res) {
     const recipe = await Recipe.findById(req.params.id) //object
-    res.render('recipes/edit', {  //what ejs page to 
+    res.render('recipes/edit', {  //what ejs page it's going to
         recipe,
     })
 }
@@ -124,6 +132,7 @@ async function update(req, res) {
 }
 
 /* -- UPDATE's friends -- */
+//AAU idea, updating ingredients and/or instructions separately, push())
 async function addToIngredients(req, res) {
     const recipe = await Recipe.findById(req.params.id);
     const ingredient = req.body.ingredients;
@@ -142,19 +151,9 @@ async function addToInstructions(req, res) {
 
 
 /* -- DELETE -- */
+// deletes the ENTIRE recipe from the Database by finding the ID (the unique req.params) and.. poof
 async function deleteRecipe(req, res) {
     await Recipe.findByIdAndDelete(req.params.id)
     res.redirect(`/recipes/userIndex`); // Redirect back to the recipe's show view
 }
 
-
-
-// https://www.codementor.io/@prasadsaya/working-with-arrays-in-mongodb-16s303gkd3
-// https://www.mongodb.com/docs/manual/tutorial/update-documents/
-// Recipe.findOneAndUpdate
-// Recipe.findByIdAndUpdate
-
-// pass req.body
-// put
-
-// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Errors/Not_a_function

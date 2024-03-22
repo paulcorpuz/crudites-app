@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var recipesCtrl = require('../controllers/recipes');
 const passport = require('passport');
-
+// set up the necessary dependencies for defining routes + reqs
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
@@ -42,3 +42,4 @@ router.get('/logout', function (req, res) {
 
 
 module.exports = router;
+

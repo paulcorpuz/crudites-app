@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+// import mongoose library ^
+
 
 const userSchema = new Schema({
     name: String,
@@ -16,18 +18,3 @@ const userSchema = new Schema({
 
 module.exports = mongoose.model('User', userSchema);
 
-
-
-/*
-
-in mongo, it looks like this
-
-_id
-name
-googleId
-email
-avatar
-createdAt ---use this ---
-updatedAt ---use this ---
-
-*/
