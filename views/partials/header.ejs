@@ -12,6 +12,7 @@
         rel="stylesheet">
     <!-- bulma -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     <!-- my beautiful CSS, or lack thereof -->
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <title>CRUDités</title>
@@ -19,45 +20,58 @@
 
 
 <body>
-    <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+    <nav class="navbar is-primary">
         <div class="navbar-brand">
             <a class="navbar-item" href="/">
-                <img src="/images/ojigi_kuma.png" width="100%" height="auto">
-            </a>
-            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
-                data-target="navbarBasicExample">
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
+                <p class="has-text-weight-bold has-text-white" >CRU·Di·tés</p>
             </a>
         </div>
-
-        <div id="navbarBasicExample" class="navbar-menu">
-            <div class="navbar-start">
-                <a href="/" class="navbar-item">Home</a>
-                <a href="/recipes" class="navbar-item">All Recipes</a>
+        <div class="navbar-start">
+            <a href="/" class="navbar-item">Home</a>
+            <a href="/recipes" class="navbar-item">All Recipes</a>
                 <% if (user) { %>
                     <a href="/recipes/userIndex" class="navbar-item">My Recipes</a>
                     <a href="/recipes/new" class="navbar-item">Add a Recipe</a>
                 <% } %>
-                <!-- TODO: TODO: TODO: TODO:-->
-                <a href="/recipes/about" class="navbar-item">About</a>
-            </div>
-
-
-
-            
+            <a href="/recipes/about" class="navbar-item">About</a>
+        </div>
             <div class="navbar-end">
                 <div class="navbar-item">
-                        <div class="buttons">
-                            <% if (user) { %>
-                                <a href="/logout" class="button is-warning">Log Out</a>
-                            <% } else { %>
-                                <a href="/auth/google" class="button is-warning">Log In</a>
-                            <% } %>
-                        </div>
+                    <div class="buttons">
+                        <% if (user) { %>
+                            <a href="/logout" class="button is-warning is-rounded">Log Out</a>
+                        <% } else { %>
+                            <a href="/auth/google" class="button is-warning is-rounded">Log In</a>
+                        <% } %>
+                    </div>
                 </div>
             </div>
         </div>
-    </nav>
+        </nav>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    

@@ -15,7 +15,6 @@ const reviewSchema = new Schema({
 }, {
     timestamps: true
 });
-// TODO: rating? ^^ update after OAuth 
 
 
 const recipeSchema = new Schema({

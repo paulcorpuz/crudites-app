@@ -94,7 +94,7 @@
                         </nav>
                     </form>
                 </div>
-                <% } %>
+            <% } %>
         </article>
     </div>
     <% if (recipe.reviews.length) { %>
@@ -104,7 +104,7 @@
                     <!-- User Avatar -->
                     <figure class="media-left">
                         <p class="image is-64x64">
-                            <img class="is-rounded" src="<%= recipe.userAvatar %>" alt="avatar"
+                            <img class="is-rounded" src="<%= r.userAvatar %>" alt="avatar"
                                 referrerpolicy="no-referrer">
                         </p>
                     </figure>
@@ -126,15 +126,16 @@
                                     </div>
                                 </div>
                             </nav>
-                            <% } %>
+                        <% } %>
                     </div>
                 </article>
-                <% }); %>
+            <% }); %>
         </div>
-        <% } else { %>
-            <h1>No Reviews Yet &#128547</h1>
-            <% } %>
+    <% } else { %>
+        <h1>No Reviews Yet &#128547</h1>
+    <% } %>
 </div>
+
 
 
 <br><br>

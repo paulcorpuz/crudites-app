@@ -109,7 +109,7 @@
                         <div class="field">
                             <label class="label">Add Ingredient</label>
                             <div class="control">
-                                <input class="input" type="text" name="ingredients" placeholder="e.g. 1/2 cup brown sugar">
+                                <textarea class="textarea" name="ingredients" placeholder="e.g. 1/2 cup brown sugar" rows="2"></textarea>
                             </div>
                             <p class="help">Forgot an ingredient?</p>
                         </div>
@@ -124,16 +124,16 @@
                 <div class="column is-narrow">
                     <div class="content">
                         <h4>Instructions</h4>
-                        <ul>
+                        <ol>
                             <% recipe.instructions.forEach(function(eachInstructions) { %>
                                 <li><%= eachInstructions %> </li>
                             <% }); %>
-                        </ul>
+                        </ol>
                         <form class="box" action="/recipes/<%= recipe._id %>/addInstructions" method="POST">
                             <div class="field">
                                 <label class="label">Add Instruction</label>
                                 <div class="control">
-                                    <input class="input" type="text" name="instructions" placeholder="Preheat oven to 350ºF">
+                                    <textarea class="textarea" name="instructions" placeholder="Preheat oven to 350ºF" rows="2"></textarea>
                                 </div>
                                 <p class="help">Forgot a step?</p>
                             </div>
